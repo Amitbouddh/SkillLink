@@ -1,1432 +1,1249 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SkillLink – स्थानीय कौशल, बड़े अवसर</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Skill Link — The workforce network for makers</title>
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com">
-    </script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 
-    <style>
-        * {
-            font-family: 'Inter', -apple-system, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background: #f3f6f9;
-        }
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #e9edf2;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #b3b8c2;
-            border-radius: 10px;
-        }
-        .shadow-card {
-            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.04);
-        }
-        .shadow-card-hover {
-            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.06);
-            transition: box-shadow 0.2s ease, transform 0.2s ease;
-        }
-        .shadow-card-hover:hover {
-            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.08);
-            transform: translateY(-2px);
-        }
-        .btn-primary {
-            background: #0a66c2;
-            color: #fff;
-            padding: 10px 24px;
-            border-radius: 24px;
-            font-weight: 600;
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s ease;
-        }
-        .btn-primary:hover {
-            background: #004182;
-            box-shadow: 0 2px 8px rgba(10, 102, 194, 0.25);
-        }
-        .btn-secondary {
-            background: #fff;
-            color: #0a66c2;
-            padding: 10px 24px;
-            border-radius: 24px;
-            font-weight: 600;
-            font-size: 14px;
-            border: 1px solid #0a66c2;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s ease;
-        }
-        .btn-secondary:hover {
-            background: #eef3f8;
-        }
-        .btn-sm {
-            padding: 6px 16px;
-            font-size: 13px;
-            border-radius: 20px;
-        }
-        .btn-ghost {
-            background: transparent;
-            color: #5e6a78;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-weight: 500;
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .btn-ghost:hover {
-            background: #eef3f8;
-            color: #0a66c2;
-        }
-        .badge-blue {
-            background: #e8f0fe;
-            color: #0a66c2;
-            padding: 2px 12px;
-            border-radius: 16px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        .badge-green {
-            background: #e1f3e8;
-            color: #057642;
-            padding: 2px 12px;
-            border-radius: 16px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        .badge-yellow {
-            background: #fef7e0;
-            color: #b26a00;
-            padding: 2px 12px;
-            border-radius: 16px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        .badge-gray {
-            background: #e9edf2;
-            color: #5e6a78;
-            padding: 2px 12px;
-            border-radius: 16px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        .badge-red {
-            background: #fde7e9;
-            color: #b3202e;
-            padding: 2px 12px;
-            border-radius: 16px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        .badge-purple {
-            background: #ede7f6;
-            color: #6c3b9e;
-            padding: 2px 12px;
-            border-radius: 16px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        .card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 16px 20px;
-            border: none;
-            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.04);
-            transition: box-shadow 0.2s ease;
-        }
-        .card:hover {
-            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.06);
-        }
-        .input-field {
-            width: 100%;
-            padding: 10px 14px;
-            border: 1px solid #d1d7df;
-            border-radius: 8px;
-            font-size: 14px;
-            transition: all 0.2s ease;
-            background: #fff;
-            outline: none;
-        }
-        .input-field:focus {
-            border-color: #0a66c2;
-            box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.1);
-        }
-        .input-field::placeholder {
-            color: #8a929f;
-        }
-        select.input-field {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a929f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 14px center;
-            padding-right: 40px;
-        }
-        textarea.input-field {
-            resize: vertical;
-            min-height: 80px;
-        }
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(4px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            animation: fadeIn 0.2s ease;
-        }
-        .modal-content {
-            background: #fff;
-            border-radius: 16px;
-            padding: 32px;
-            max-width: 560px;
-            width: 92%;
-            max-height: 90vh;
-            overflow-y: auto;
-            animation: slideUp 0.25s ease;
-            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px) scale(0.96);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-        .sidebar-item {
-            transition: all 0.15s ease;
-            cursor: pointer;
-            border-radius: 8px;
-            padding: 8px 12px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #5e6a78;
-        }
-        .sidebar-item:hover {
-            background: #eef3f8;
-            color: #0a66c2;
-        }
-        .sidebar-item.active {
-            background: #e8f0fe;
-            color: #0a66c2;
-            font-weight: 600;
-        }
-        .sidebar-item.active i {
-            color: #0a66c2;
-        }
-        .sidebar-item i {
-            width: 20px;
-            text-align: center;
-            font-size: 16px;
-            color: #8a929f;
-            transition: color 0.15s;
-        }
-        .sidebar-item:hover i {
-            color: #0a66c2;
-        }
-        .sidebar-item.active i {
-            color: #0a66c2;
-        }
-        .avatar-img {
-            border-radius: 50%;
-            object-fit: cover;
-            flex-shrink: 0;
-            border: 2px solid #fff;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-        }
-        .toast-container {
-            position: fixed;
-            bottom: 28px;
-            right: 28px;
-            z-index: 2000;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .toast {
-            background: #1d2228;
-            color: #fff;
-            padding: 14px 20px;
-            border-radius: 12px;
-            font-size: 14px;
-            max-width: 400px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-            animation: slideUp 0.25s ease;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .post-actions button {
-            transition: all 0.15s ease;
-        }
-        .post-actions button:hover {
-            background: #eef3f8;
-        }
-        @media (max-width: 768px) {
-            .sidebar {
-                display: none !important;
-            }
-            .modal-content {
-                padding: 20px;
-                margin: 12px;
-                max-width: 100%;
-            }
-            .card {
-                padding: 14px 16px;
-            }
-            .btn-primary,
-            .btn-secondary {
-                padding: 8px 18px;
-                font-size: 13px;
-            }
-        }
-        @media (min-width: 769px) {
-            .sidebar-mobile-toggle {
-                display: none !important;
-            }
-        }
-        .tab-btn {
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #5e6a78;
-            transition: all 0.15s ease;
-            cursor: pointer;
-            border: none;
-            background: transparent;
-        }
-        .tab-btn:hover {
-            color: #0a66c2;
-            background: #eef3f8;
-        }
-        .tab-btn.active {
-            color: #0a66c2;
-            background: #e8f0fe;
-            font-weight: 600;
-        }
-        .msg-bubble {
-            padding: 10px 16px;
-            border-radius: 16px;
-            max-width: 76%;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        .msg-bubble.sent {
-            background: #0a66c2;
-            color: #fff;
-            border-bottom-right-radius: 4px;
-        }
-        .msg-bubble.received {
-            background: #e9edf2;
-            color: #1d2228;
-            border-bottom-left-radius: 4px;
-        }
-        .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-    </style>
+<style>
+:root{
+  --ink:#0f1222;
+  --ink-soft:#3f4258;
+  --muted:#6b7280;
+  --faint:#9aa0b4;
+  --line:#e6e8f0;
+  --surface:#ffffff;
+  --bg:#f6f7fb;
+  --navy:#11132c;
+  --navy-soft:#1a1d3d;
+  --indigo:#4338ca;
+  --indigo-600:#4f46e5;
+  --indigo-50:#eef0ff;
+  --lavender:#b6c0fb;
+  --green:#16803c;
+  --green-bg:#e5f6ea;
+  --amber:#b45309;
+  --amber-bg:#fef3e2;
+  --red:#b91c1c;
+  --red-bg:#fdeceb;
+  --purple:#7c3aed;
+  --purple-bg:#f2ecfd;
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;}
+.serif{font-family:'Instrument Serif', serif; font-style:italic; font-weight:400;}
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:#cfd3e2;border-radius:10px;}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;border-radius:10px;padding:10px 20px;cursor:pointer;border:1px solid transparent;transition:all .15s ease;white-space:nowrap;}
+.btn:disabled{opacity:.45;cursor:not-allowed;}
+.btn-primary{background:var(--indigo-600);color:#fff;box-shadow:0 1px 2px rgba(20,20,50,.08);}
+.btn-primary:hover:not(:disabled){background:var(--indigo);}
+.btn-secondary{background:#fff;color:var(--ink);border-color:var(--line);}
+.btn-secondary:hover:not(:disabled){border-color:#c7cbe0;background:#fafbff;}
+.btn-ghost{background:transparent;color:var(--muted);}
+.btn-ghost:hover:not(:disabled){background:#eef0f7;color:var(--ink);}
+.btn-dark{background:var(--navy);color:#fff;}
+.btn-dark:hover:not(:disabled){background:#000;}
+.btn-sm{padding:7px 14px;font-size:13px;border-radius:9px;}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;transition:box-shadow .15s ease, transform .15s ease;}
+.card-hover:hover{box-shadow:0 8px 24px rgba(20,20,60,.06);transform:translateY(-1px);}
+
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:3px 11px;border-radius:20px;}
+.badge-green{background:var(--green-bg);color:var(--green);}
+.badge-amber{background:var(--amber-bg);color:var(--amber);}
+.badge-red{background:var(--red-bg);color:var(--red);}
+.badge-indigo{background:var(--indigo-50);color:var(--indigo);}
+.badge-gray{background:#eef0f4;color:var(--muted);}
+.badge-purple{background:var(--purple-bg);color:var(--purple);}
+.badge-navy{background:rgba(255,255,255,.1);color:#dfe3ff;border:1px solid rgba(255,255,255,.14);}
+
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--indigo);}
+
+.input-field{width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:10px;font-size:14px;background:#fff;outline:none;transition:all .15s ease;}
+.input-field:focus{border-color:var(--indigo-600);box-shadow:0 0 0 3px rgba(79,70,229,.12);}
+.input-field::placeholder{color:var(--faint);}
+
+.sidebar-item{display:flex;align-items:center;gap:12px;padding:9px 13px;border-radius:10px;font-size:14px;font-weight:500;color:var(--muted);cursor:pointer;transition:all .12s ease;}
+.sidebar-item i{width:18px;text-align:center;font-size:15px;color:var(--faint);}
+.sidebar-item:hover{background:#f2f3f9;color:var(--ink);}
+.sidebar-item.active{background:var(--indigo-50);color:var(--indigo);font-weight:600;}
+.sidebar-item.active i{color:var(--indigo);}
+
+.avatar-img{border-radius:50%;object-fit:cover;flex-shrink:0;background:#e9ebf3;}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(10,10,25,.5);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;z-index:1000;animation:fadeIn .15s ease;padding:16px;}
+.modal-content{background:#fff;border-radius:18px;padding:28px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;animation:slideUp .2s ease;box-shadow:0 20px 60px rgba(10,10,30,.2);}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+.toast-container{position:fixed;bottom:24px;right:24px;z-index:2000;display:flex;flex-direction:column;gap:10px;}
+.toast{background:var(--navy);color:#fff;padding:13px 18px;border-radius:12px;font-size:14px;max-width:360px;box-shadow:0 10px 30px rgba(0,0,0,.25);display:flex;align-items:center;gap:10px;animation:slideUp .2s ease;}
+
+.hero-navy{background:radial-gradient(ellipse 120% 100% at 20% 0%, #1c2050 0%, var(--navy) 55%);border-radius:18px;color:#fff;}
+.msg-bubble{padding:10px 15px;border-radius:15px;max-width:75%;font-size:14px;line-height:1.55;}
+.msg-bubble.sent{background:var(--indigo-600);color:#fff;border-bottom-right-radius:4px;}
+.msg-bubble.received{background:#eef0f4;color:var(--ink);border-bottom-left-radius:4px;}
+.line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+
+.role-pick{border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;transition:all .12s ease;}
+.role-pick:hover{border-color:#c7cbe0;background:#fafbff;}
+.role-pick.selected{border-color:var(--indigo-600);background:var(--indigo-50);}
+
+@media (max-width: 900px){
+  .app-sidebar{display:none !important;}
+}
+</style>
 </head>
 <body>
+<div id="root"></div>
 
-    <div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
 
-    <!-- React + ReactDOM + Babel -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js">
-    </script>
+<script type="text/babel">
+const { useState, createContext, useContext } = React;
 
-    <script type="text/babel">
-        const { useState, useEffect, useRef, useCallback, useMemo, createContext, useContext } = React;
+/* ---------- helpers ---------- */
+const initials = (name, bg='4f46e5') =>
+  `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=${bg}&color=fff&size=128&bold=true&font-size=0.38`;
 
-        // ─── ICONS ───────────────────────────────────────────────────────────────
-        const Icon = {
-            Home: () => <i className="fas fa-home" />,
-            Feed: () => <i className="fas fa-newspaper" />,
-            Jobs: () => <i className="fas fa-briefcase" />,
-            Network: () => <i className="fas fa-users" />,
-            Messages: () => <i className="fas fa-comment-dots" />,
-            Notifications: () => <i className="fas fa-bell" />,
-            Profile: () => <i className="fas fa-user" />,
-            Settings: () => <i className="fas fa-cog" />,
-            LogOut: () => <i className="fas fa-sign-out-alt" />,
-            Plus: () => <i className="fas fa-plus" />,
-            Search: () => <i className="fas fa-search" />,
-            Heart: () => <i className="fas fa-heart" />,
-            HeartOutline: () => <i className="far fa-heart" />,
-            Comment: () => <i className="far fa-comment" />,
-            Share: () => <i className="far fa-share-square" />,
-            Send: () => <i className="fas fa-paper-plane" />,
-            ArrowRight: () => <i className="fas fa-arrow-right" />,
-            ChevronRight: () => <i className="fas fa-chevron-right" />,
-            ChevronLeft: () => <i className="fas fa-chevron-left" />,
-            Sparkles: () => <i className="fas fa-sparkles" />,
-            Applicants: () => <i className="fas fa-user-check" />,
-            Graph: () => <i className="fas fa-chart-line" />,
-        };
-
-        // ─── MOCK DATA (स्थानीय कारीगरों, छोटे व्यवसायों के अनुसार) ──────────
-
-        const MOCK_USERS = [{
-            id: 1,
-            name: 'राजेश कुमार',
-            role: 'artisan',
-            bio: 'लकड़ी की कारीगरी – 8 साल का अनुभव | जोधपुर',
-            skills: ['Wood Carving', 'Furniture Design', 'Handcrafted Decor'],
-            experience: [{ title: 'Master Artisan', company: 'Heritage Crafts', from: '2016', to: 'Present' }],
-            education: [{ degree: 'Diploma in Fine Arts', college: 'Jaipur Art College', year: '2015' }],
-            location: 'जोधपुर, राजस्थान',
-            profileImage: 'https://ui-avatars.com/api/?name=Rajesh+Kumar&background=7c3aed&color=fff&size=128&bold=true',
-            coverImage: 'https://picsum.photos/seed/cover2/800/200',
-            services: ['Wood Carving', 'Furniture Making', 'Custom Decor'],
-        }, {
-            id: 2,
-            name: 'मीरा जोशी',
-            role: 'artisan',
-            bio: 'टेक्सटाइल डिजाइनर – ब्लॉक प्रिंटिंग विशेषज्ञ | अहमदाबाद',
-            skills: ['Textile Design', 'Block Printing', 'Natural Dyes'],
-            experience: [{ title: 'Lead Designer', company: 'FabIndia', from: '2018', to: 'Present' }],
-            education: [{ degree: 'B.Des Textile', college: 'NIFT Delhi', year: '2018' }],
-            location: 'अहमदाबाद, गुजरात',
-            profileImage: 'https://ui-avatars.com/api/?name=Meera+Joshi&background=d97706&color=fff&size=128&bold=true',
-            coverImage: 'https://picsum.photos/seed/cover4/800/200',
-            services: ['Block Printing', 'Embroidery', 'Natural Dyes'],
-        }, {
-            id: 3,
-            name: 'इमरान शेख',
-            role: 'artisan',
-            bio: 'मेटल क्राफ्ट – पीतल, तांबा, लोहा | उदयपुर',
-            skills: ['Metal Craft', 'Brass Work', 'Forging'],
-            experience: [{ title: 'Metal Craftsman', company: 'Udaipur Metal Works', from: '2014', to: 'Present' }],
-            education: [{ degree: 'ITI Metal Craft', college: 'Udaipur ITI', year: '2013' }],
-            location: 'उदयपुर, राजस्थान',
-            profileImage: 'https://ui-avatars.com/api/?name=Imran+Sheikh&background=059669&color=fff&size=128&bold=true',
-            coverImage: 'https://picsum.photos/seed/cover5/800/200',
-            services: ['Brass Handles', 'Copper Art', 'Wrought Iron'],
-        }, {
-            id: 4,
-            name: 'Aria Pipes & Fittings',
-            role: 'company',
-            company: 'Aria Pipes & Fittings',
-            about: 'हम पाइप, फिटिंग और प्लंबिंग सामग्री की सप्लाई करते हैं।',
-            industry: 'Manufacturing',
-            location: 'जयपुर, राजस्थान',
-            size: '20-50',
-            website: 'https://ariapipes.example.com',
-            profileImage: 'https://ui-avatars.com/api/?name=Aria+Pipes&background=dc2626&color=fff&size=128&bold=true',
-            coverImage: 'https://picsum.photos/seed/cover6/800/200',
-            products: ['PVC Pipes', 'GI Fittings', 'Plumbing Kits'],
-        }, {
-            id: 5,
-            name: 'Priya Furniture House',
-            role: 'company',
-            company: 'Priya Furniture House',
-            about: 'गुणवत्ता वाला फर्नीचर और कस्टम वुडवर्क।',
-            industry: 'Furniture',
-            location: 'जोधपुर, राजस्थान',
-            size: '10-30',
-            website: 'https://priyafurniture.example.com',
-            profileImage: 'https://ui-avatars.com/api/?name=Priya+Furniture&background=0a66c2&color=fff&size=128&bold=true',
-            coverImage: 'https://picsum.photos/seed/cover7/800/200',
-            products: ['Sofas', 'Dining Tables', 'Wardrobes'],
-        }];
-
-        // ─── पोस्ट (स्थानीय अवसर, सेवाएँ, माँग) ──────────────────────────────
-
-        const MOCK_POSTS = [{
-            id: 1,
-            userId: 1,
-            userName: 'राजेश कुमार',
-            userRole: 'artisan',
-            userImage: 'https://ui-avatars.com/api/?name=Rajesh+Kumar&background=7c3aed&color=fff&size=64&bold=true',
-            content: 'नया हाथ से तराशा गया शीशम की लकड़ी का डाइनिंग टेबल तैयार है। 🪚✨ आर्डर के लिए संपर्क करें। #WoodCarving #Handcrafted #Jodhpur',
-            image: 'https://picsum.photos/seed/wood/600/300',
-            likes: 42,
-            comments: [
-                { id: 1, user: 'मीरा जोशी', text: 'बहुत सुंदर! बढ़िया काम।', time: '1h ago' },
-                { id: 2, user: 'Priya Furniture House', text: 'हमें आपके साथ काम करना अच्छा लगेगा।', time: '30m ago' }
-            ],
-            shares: 7,
-            timestamp: '5h ago',
-            type: 'service',
-        }, {
-            id: 2,
-            userId: 4,
-            userName: 'Aria Pipes & Fittings',
-            userRole: 'company',
-            userImage: 'https://ui-avatars.com/api/?name=Aria+Pipes&background=dc2626&color=fff&size=64&bold=true',
-            content: 'हमें PVC पाइप और GI फिटिंग की थोक खरीद के लिए भागीदार चाहिए। 📦 थोक दरों पर उपलब्ध। संपर्क करें! #Pipe #Plumbing #Jaipur',
-            image: 'https://picsum.photos/seed/pipe/600/300',
-            likes: 34,
-            comments: [
-                { id: 1, user: 'इमरान शेख', text: 'मुझे कुछ फिटिंग की ज़रूरत है, जानकारी भेजें।', time: '2h ago' }
-            ],
-            shares: 8,
-            timestamp: '1d ago',
-            type: 'demand',
-        }, {
-            id: 3,
-            userId: 5,
-            userName: 'Priya Furniture House',
-            userRole: 'company',
-            userImage: 'https://ui-avatars.com/api/?name=Priya+Furniture&background=0a66c2&color=fff&size=64&bold=true',
-            content: 'हम एक कुशल लकड़ी कारीगर की तलाश में हैं। अच्छा काम करने वाले को प्राथमिकता। अच्छा पारिश्रमिक। #WoodCarving #Job #Jodhpur',
-            image: null,
-            likes: 28,
-            comments: [
-                { id: 1, user: 'राजेश कुमार', text: 'मुझे दिलचस्पी है, कृपया विवरण भेजें।', time: '3h ago' }
-            ],
-            shares: 5,
-            timestamp: '2d ago',
-            type: 'job',
-        }, {
-            id: 4,
-            userId: 2,
-            userName: 'मीरा जोशी',
-            userRole: 'artisan',
-            userImage: 'https://ui-avatars.com/api/?name=Meera+Joshi&background=d97706&color=fff&size=64&bold=true',
-            content: 'ब्लॉक प्रिंट और नेचुरल डाई से बने कपड़े, कुशन कवर और साड़ियाँ उपलब्ध। 🎨 ऑर्डर बुक करें! #BlockPrinting #Textile #Ahmedabad',
-            image: 'https://picsum.photos/seed/textile/600/300',
-            likes: 56,
-            comments: [
-                { id: 1, user: 'Aria Pipes & Fittings', text: 'हमें कुछ ऑफिस कुशन की ज़रूरत है।', time: '1d ago' }
-            ],
-            shares: 12,
-            timestamp: '3d ago',
-            type: 'service',
-        }, {
-            id: 5,
-            userId: 3,
-            userName: 'इमरान शेख',
-            userRole: 'artisan',
-            userImage: 'https://ui-avatars.com/api/?name=Imran+Sheikh&background=059669&color=fff&size=64&bold=true',
-            content: 'पीतल के दरवाज़े के हैंडल, तांबे की दीवार कला – हस्तनिर्मित। 🏺 कस्टम ऑर्डर भी लिए जाते हैं। #MetalCraft #Handmade #Udaipur',
-            image: 'https://picsum.photos/seed/metal/600/300',
-            likes: 38,
-            comments: [],
-            shares: 4,
-            timestamp: '4d ago',
-            type: 'service',
-        }];
-
-        // ─── जॉब्स / अवसर (स्थानीय) ──────────────────────────────────────────
-
-        const MOCK_JOBS = [{
-            id: 1,
-            companyId: 5,
-            companyName: 'Priya Furniture House',
-            companyLogo: 'https://ui-avatars.com/api/?name=Priya+Furniture&background=0a66c2&color=fff&size=64&bold=true',
-            title: 'लकड़ी कारीगर (Wood Carver)',
-            type: 'full-time',
-            location: 'जोधपुर, राजस्थान',
-            stipend: '₹15,000 - ₹25,000 / माह',
-            description: 'हमें अनुभवी लकड़ी कारीगर की ज़रूरत है जो हाथ से तराशने का काम कर सके। फर्नीचर और सजावटी वस्तुओं पर काम होगा।',
-            skills: ['Wood Carving', 'Furniture Making', 'Design'],
-            applicants: 12,
-            postedDate: '2 days ago',
-            deadline: '2025-02-15',
-            isInternship: false,
-        }, {
-            id: 2,
-            companyId: 4,
-            companyName: 'Aria Pipes & Fittings',
-            companyLogo: 'https://ui-avatars.com/api/?name=Aria+Pipes&background=dc2626&color=fff&size=64&bold=true',
-            title: 'फिटिंग सप्लायर (व्यापार)',
-            type: 'part-time',
-            location: 'जयपुर, राजस्थान',
-            stipend: '₹10,000 - ₹12,000 / माह',
-            description: 'हमें एक भरोसेमंद फिटिंग सप्लायर की तलाश है जो PVC और GI फिटिंग की सप्लाई कर सके। थोक और खुदरा दोनों काम होंगे।',
-            skills: ['Supply Chain', 'Plumbing', 'Negotiation'],
-            applicants: 8,
-            postedDate: '3 days ago',
-            deadline: '2025-02-20',
-            isInternship: false,
-        }, {
-            id: 3,
-            companyId: 4,
-            companyName: 'Aria Pipes & Fittings',
-            companyLogo: 'https://ui-avatars.com/api/?name=Aria+Pipes&background=dc2626&color=fff&size=64&bold=true',
-            title: 'पाइप फिटिंग सीखने का मौका (इंटर्नशिप)',
-            type: 'internship',
-            location: 'जयपुर, राजस्थान',
-            stipend: '₹5,000 / माह',
-            description: 'हम युवाओं को पाइप फिटिंग, प्लंबिंग और सप्लाई चेन की ट्रेनिंग देना चाहते हैं। 3 महीने की इंटर्नशिप।',
-            skills: ['Plumbing', 'Fitting', 'Learning'],
-            applicants: 23,
-            postedDate: '5 days ago',
-            deadline: '2025-02-28',
-            isInternship: true,
-        }];
-
-        // ─── एप्लिकेशन (आवेदन) ──────────────────────────────────────────────
-
-        const MOCK_APPLICATIONS = [{
-            id: 1,
-            jobId: 1,
-            userId: 1,
-            userName: 'राजेश कुमार',
-            userImage: 'https://ui-avatars.com/api/?name=Rajesh+Kumar&background=7c3aed&color=fff&size=64&bold=true',
-            status: 'shortlisted',
-            appliedDate: '2 days ago',
-        }, {
-            id: 2,
-            jobId: 2,
-            userId: 3,
-            userName: 'इमरान शेख',
-            userImage: 'https://ui-avatars.com/api/?name=Imran+Sheikh&background=059669&color=fff&size=64&bold=true',
-            status: 'applied',
-            appliedDate: '1 day ago',
-        }, {
-            id: 3,
-            jobId: 3,
-            userId: 2,
-            userName: 'मीरा जोशी',
-            userImage: 'https://ui-avatars.com/api/?name=Meera+Joshi&background=d97706&color=fff&size=64&bold=true',
-            status: 'applied',
-            appliedDate: '3 days ago',
-        }];
-
-        // ─── संदेश ──────────────────────────────────────────────────────────────
-
-        const MOCK_MESSAGES = [{
-            id: 1,
-            senderId: 1,
-            senderName: 'राजेश कुमार',
-            senderImage: 'https://ui-avatars.com/api/?name=Rajesh+Kumar&background=7c3aed&color=fff&size=64&bold=true',
-            receiverId: 5,
-            text: 'नमस्ते, मुझे आपके फर्नीचर कारीगर के काम में दिलचस्पी है। क्या मैं अपना पोर्टफोलियो भेज सकता हूँ?',
-            time: '2h ago',
-            read: true,
-        }, {
-            id: 2,
-            senderId: 4,
-            senderName: 'Aria Pipes & Fittings',
-            senderImage: 'https://ui-avatars.com/api/?name=Aria+Pipes&background=dc2626&color=fff&size=64&bold=true',
-            receiverId: 3,
-            text: 'इमरान, क्या आप हमें पीतल के हैंडल सप्लाई कर सकते हैं?',
-            time: '1d ago',
-            read: false,
-        }];
-
-        // ─── नोटिफिकेशन ──────────────────────────────────────────────────────
-
-        const MOCK_NOTIFICATIONS = [
-            { id: 1, userId: 1, text: 'Priya Furniture House ने आपका आवेदन शॉर्टलिस्ट किया।', type: 'application', read: false,
-                time: '10m ago' },
-            { id: 2, userId: 2, text: 'राजेश कुमार ने आपकी पोस्ट लाइक की।', type: 'like', read: false, time: '30m ago' },
-            { id: 3, userId: 3, text: 'Aria Pipes ने आपको संदेश भेजा।', type: 'message', read: true, time: '1h ago' },
-        ];
-
-        // ─── CONTEXT ──────────────────────────────────────────────────────────────
-
-        const AppContext = createContext();
-
-        function AppProvider({ children }) {
-            const [currentPage, setCurrentPage] = useState('landing');
-            const [currentUser, setCurrentUser] = useState(null);
-            const [toasts, setToasts] = useState([]);
-            const [posts, setPosts] = useState(MOCK_POSTS);
-            const [jobs, setJobs] = useState(MOCK_JOBS);
-            const [applications, setApplications] = useState(MOCK_APPLICATIONS);
-            const [notifications, setNotifications] = useState(MOCK_NOTIFICATIONS);
-            const [messages, setMessages] = useState(MOCK_MESSAGES);
-            const [selectedChat, setSelectedChat] = useState(null);
-            const [showCreatePost, setShowCreatePost] = useState(false);
-            const [newPostContent, setNewPostContent] = useState('');
-
-            const addToast = (msg, type = 'info') => {
-                const id = Date.now();
-                setToasts(prev => [...prev, { id, msg, type }]);
-                setTimeout(() => setToasts(prev => prev.filter(t => t.id !== id)), 4000);
-            };
-
-            const login = (userId) => {
-                const user = MOCK_USERS.find(u => u.id === userId);
-                if (user) {
-                    setCurrentUser(user);
-                    setCurrentPage('feed');
-                    addToast(`स्वागत है ${user.name}!`, 'success');
-                    return true;
-                }
-                return false;
-            };
-
-            const logout = () => {
-                setCurrentUser(null);
-                setCurrentPage('landing');
-                addToast('लॉग आउट किया गया', 'info');
-            };
-
-            const likePost = (postId) => {
-                setPosts(prev => prev.map(p => p.id === postId ? { ...p, likes: p.likes + 1 } : p));
-            };
-
-            const addComment = (postId, text) => {
-                if (!currentUser) return;
-                setPosts(prev => prev.map(p => {
-                    if (p.id === postId) {
-                        return {
-                            ...p,
-                            comments: [...p.comments, { id: Date.now(), user: currentUser.name, text, time: 'अभी' }]
-                        };
-                    }
-                    return p;
-                }));
-                addToast('कमेंट जोड़ा गया!', 'success');
-            };
-
-            const createPost = (content) => {
-                if (!currentUser) return;
-                const newPost = {
-                    id: Date.now(),
-                    userId: currentUser.id,
-                    userName: currentUser.name,
-                    userRole: currentUser.role,
-                    userImage: currentUser.profileImage,
-                    content: content,
-                    image: null,
-                    likes: 0,
-                    comments: [],
-                    shares: 0,
-                    timestamp: 'अभी',
-                    type: 'post',
-                };
-                setPosts([newPost, ...posts]);
-                setShowCreatePost(false);
-                setNewPostContent('');
-                addToast('पोस्ट प्रकाशित!', 'success');
-            };
-
-            const applyForJob = (jobId) => {
-                if (!currentUser) return;
-                const alreadyApplied = applications.some(a => a.jobId === jobId && a.userId === currentUser.id);
-                if (alreadyApplied) {
-                    addToast('आप पहले ही आवेदन कर चुके हैं', 'info');
-                    return;
-                }
-                const newApp = {
-                    id: Date.now(),
-                    jobId: jobId,
-                    userId: currentUser.id,
-                    userName: currentUser.name,
-                    userImage: currentUser.profileImage,
-                    status: 'applied',
-                    appliedDate: 'अभी',
-                };
-                setApplications([...applications, newApp]);
-                addToast('आवेदन सफलतापूर्वक भेजा गया!', 'success');
-            };
-
-            const updateApplicationStatus = (appId, status) => {
-                setApplications(prev => prev.map(a => a.id === appId ? { ...a, status } : a));
-                addToast(`आवेदन ${status}`, 'info');
-            };
-
-            const value = {
-                currentPage,
-                setCurrentPage,
-                currentUser,
-                toasts,
-                addToast,
-                login,
-                logout,
-                posts,
-                setPosts,
-                jobs,
-                setJobs,
-                applications,
-                setApplications,
-                notifications,
-                setNotifications,
-                messages,
-                setMessages,
-                selectedChat,
-                setSelectedChat,
-                likePost,
-                addComment,
-                createPost,
-                applyForJob,
-                updateApplicationStatus,
-                showCreatePost,
-                setShowCreatePost,
-                newPostContent,
-                setNewPostContent,
-            };
-
-            return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
-        }
-
-        function useApp() { return useContext(AppContext); }
-
-        // ─── COMPONENTS ──────────────────────────────────────────────────────────
-
-        function Button({ children, variant = 'primary', className = '', size = 'default', ...props }) {
-            const base = variant === 'primary' ? 'btn-primary' :
-                variant === 'secondary' ? 'btn-secondary' :
-                variant === 'ghost' ? 'btn-ghost' : 'btn-primary';
-            const sizeCls = size === 'sm' ? 'btn-sm' : '';
-            return <button className={`${base} ${sizeCls} ${className}`} {...props}>{children}</button>;
-        }
-
-        function Card({ children, className = '' }) {
-            return <div className={`card ${className}`}>{children}</div>;
-        }
-
-        function Badge({ children, variant = 'blue' }) {
-            const cls = {
-                blue: 'badge-blue',
-                green: 'badge-green',
-                yellow: 'badge-yellow',
-                gray: 'badge-gray',
-                red: 'badge-red',
-                purple: 'badge-purple'
-            } [variant] || 'badge-blue';
-            return <span className={cls}>{children}</span>;
-        }
-
-        function Modal({ isOpen, onClose, children, title = '' }) {
-            if (!isOpen) return null;
-            return <div className="modal-overlay" onClick={onClose}>
-                <div className="modal-content" onClick={e => e.stopPropagation()}>
-                    {title && <h3 className="text-lg font-bold text-[#1d2228] mb-4">{title}</h3>}
-                    {children}
-                </div>
-            </div>;
-        }
-
-        function ToastContainer() {
-            const { toasts } = useApp();
-            return <div className="toast-container">
-                {toasts.map(t => <div key={t.id} className="toast">
-                        <i className="fas fa-check-circle text-emerald-400 text-xl flex-shrink-0" />
-                        <span>{t.msg}</span>
-                    </div>)}
-            </div>;
-        }
-
-        function Avatar({ src, name, size = 10, className = '' }) {
-            const sizePx = size * 4;
-            const fallback = `https://ui-avatars.com/api/?name=${encodeURIComponent(name || 'User')}&background=0a66c2&color=fff&size=128&bold=true`;
-            return <img src={src || fallback} alt={name || 'User'}
-            className={`avatar-img rounded-full object-cover ${className}`}
-            style={{ width: sizePx, height: sizePx }} />;
-        }
-
-        // ─── SIDEBAR ──────────────────────────────────────────────────────────────
-
-        function Sidebar({ items, active, onSelect, bottomItems = [] }) {
-            return <div className="sidebar w-64 bg-white border-r border-[#d1d7df] h-screen sticky top-0 flex flex-col p-4 overflow-y-auto">
-                <div className="flex items-center gap-3 mb-6 px-2">
-                    <div className="w-9 h-9 bg-[#0a66c2] rounded-lg flex items-center justify-center text-white font-bold text-sm shadow-sm">
-                        SL
-                    </div>
-                    <span className="text-xl font-bold text-[#1d2228] tracking-tight">SkillLink</span>
-                </div>
-                <nav className="flex-1 space-y-1">
-                    {items.map((item, i) => {
-                        const IconComp = item.icon;
-                        const isActive = active === item.id;
-                        return <div key={i} className={`sidebar-item ${isActive ? 'active' : ''}`} onClick={() => onSelect(
-                                item.id)}>
-                            <IconComp />
-                            <span>{item.label}</span>
-                            {item.badge && <span className="ml-auto text-xs bg-[#0a66c2] text-white px-2 py-0.5 rounded-full">{item
-                                    .badge}</span>}
-                        </div>;
-                    })}
-                </nav>
-                {bottomItems.length > 0 && <div className="border-t border-[#d1d7df] pt-4 mt-2 space-y-1">
-                        {bottomItems.map((item, i) => {
-                            const IconComp = item.icon;
-                            return <div key={i} className={`sidebar-item ${active === item.id ? 'active' : ''}`}
-                                onClick={() => onSelect(item.id)}>
-                                <IconComp />
-                                <span>{item.label}</span>
-                            </div>;
-                        })}
-                    </div>}
-            </div>;
-        }
-
-        // ─── LANDING PAGE ─────────────────────────────────────────────────────────
-
-        function LandingPage() {
-            const { setCurrentPage } = useApp();
-            return <div className="min-h-screen bg-white">
-                <header className="border-b border-[#d1d7df] bg-white/95 backdrop-blur-sm sticky top-0 z-50">
-                    <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                            <div className="w-9 h-9 bg-[#0a66c2] rounded-lg flex items-center justify-center text-white font-bold text-sm shadow-sm">
-                                SL
-                            </div>
-                            <span className="text-xl font-bold text-[#1d2228] tracking-tight">SkillLink</span>
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <a href="#" className="text-sm font-medium text-[#5e6a78] hover:text-[#0a66c2] transition hidden md:block">जानें</a>
-                            <a href="#" className="text-sm font-medium text-[#5e6a78] hover:text-[#0a66c2] transition hidden md:block">अवसर</a>
-                            <Button onClick={() => setCurrentPage('login')}>शुरू करें</Button>
-                        </div>
-                    </div>
-                </header>
-                <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
-                    <div className="flex flex-col lg:flex-row items-center gap-12">
-                        <div className="flex-1">
-                            <div className="inline-flex items-center gap-2 bg-[#e8f0fe] text-[#0a66c2] px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
-                                <Icon.Sparkles /> स्थानीय कौशल, बड़े अवसर
-                            </div>
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1d2228] leading-tight">
-                                जोड़ें, <br />
-                                <span className="text-[#0a66c2]">सीखें और बढ़ें</span>
-                            </h1>
-                            <p className="text-lg text-[#5e6a78] mt-4 max-w-lg leading-relaxed">
-                                SkillLink आपको स्थानीय कारीगरों, छोटे व्यवसायों और ज़रूरतमंद लोगों से जोड़ता है। अपनी सेवा बेचें, नया काम पाएँ, और अपना नेटवर्क बनाएँ।
-                            </p>
-                            <div className="flex flex-wrap gap-4 mt-8">
-                                <Button onClick={() => setCurrentPage('login')}>शुरू करें <Icon.ArrowRight /></Button>
-                                <Button variant="secondary" onClick={() => setCurrentPage('login')}>अवसर देखें</Button>
-                            </div>
-                            <div className="flex items-center gap-6 mt-8 text-sm text-[#5e6a78]">
-                                <div className="flex items-center gap-2"><i className="fas fa-check-circle text-[#0a66c2]" /> <span>5K+ कारीगर</span></div>
-                                <div className="flex items-center gap-2"><i className="fas fa-check-circle text-[#0a66c2]" /> <span>1K+ व्यवसाय</span></div>
-                            </div>
-                        </div>
-                        <div className="flex-1 w-full">
-                            <div className="bg-white rounded-xl p-6 border border-[#d1d7df] shadow-hero">
-                                <div className="flex items-center gap-4 mb-5">
-                                    <div className="w-12 h-12 bg-gradient-to-br from-[#0a66c2] to-[#7c3aed] rounded-lg flex items-center justify-center text-white text-lg font-bold shadow-sm">
-                                        SL
-                                    </div>
-                                    <div><div className="font-semibold text-[#1d2228]">ट्रेंडिंग</div><div className="text-sm text-[#5e6a78]">आज 3 नए अवसर</div></div>
-                                </div>
-                                <div className="bg-[#f3f6f9] rounded-lg p-4 border border-[#d1d7df]">
-                                    <div className="flex items-center gap-4">
-                                        <img src="https://ui-avatars.com/api/?name=Wood+Carver&background=059669&color=fff&size=64&bold=true"
-                                        alt="Job" className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm" />
-                                        <div className="flex-1">
-                                            <div className="font-semibold text-[#1d2228]">लकड़ी कारीगर</div>
-                                            <div className="text-sm text-[#5e6a78]">Priya Furniture · जोधपुर</div>
-                                        </div>
-                                        <div className="text-right"><div className="text-sm font-bold text-[#0a66c2]">₹15K-25K</div><div className="text-xs text-[#5e6a78]">Full-time</div></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <footer className="bg-[#1d2228] text-white py-12">
-                    <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-                        <div className="flex items-center gap-2"><div className="w-9 h-9 bg-[#0a66c2] rounded-lg flex items-center justify-center text-white font-bold text-sm">SL</div><span className="text-lg font-bold">SkillLink</span></div>
-                        <div className="flex gap-6 text-sm text-[#8a929f] mt-4 md:mt-0"><a href="#" className="hover:text-white transition">हमारे बारे में</a><a href="#" className="hover:text-white transition">गोपनीयता</a><a href="#" className="hover:text-white transition">नियम</a></div>
-                        <div className="text-sm text-[#8a929f] mt-4 md:mt-0">© 2024 SkillLink. सभी अधिकार सुरक्षित।</div>
-                    </div>
-                </footer>
-            </div>;
-        }
-
-        // ─── LOGIN ────────────────────────────────────────────────────────────────
-
-        function LoginPage() {
-            const { login, setCurrentPage } = useApp();
-            const [selectedUser, setSelectedUser] = useState(null);
-
-            const handleLogin = () => {
-                if (selectedUser) login(selectedUser);
-            };
-
-            return <div className="min-h-screen flex items-center justify-center bg-[#f3f6f9] p-4">
-                <div className="bg-white rounded-xl shadow-card border border-[#d1d7df] p-8 max-w-md w-full">
-                    <div className="flex items-center gap-2 mb-6">
-                        <div className="w-9 h-9 bg-[#0a66c2] rounded-lg flex items-center justify-center text-white font-bold text-sm shadow-sm">
-                            SL
-                        </div>
-                        <span className="text-xl font-bold text-[#1d2228] tracking-tight">SkillLink</span>
-                    </div>
-                    <h2 className="text-xl font-bold text-[#1d2228]">स्वागत है</h2>
-                    <p className="text-sm text-[#5e6a78] mt-1">अपना खाता चुनकर साइन इन करें</p>
-                    <div className="mt-6 space-y-3 max-h-60 overflow-y-auto">
-                        {MOCK_USERS.map(u => (
-                            <div key={u.id}
-                            className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition ${selectedUser === u.id ? 'border-[#0a66c2] bg-[#e8f0fe]' : 'border-[#d1d7df] hover:bg-[#f3f6f9]'}`}
-                            onClick={() => setSelectedUser(u.id)}
-                            >
-                            <img src={u.profileImage} alt={u.name} className="w-10 h-10 rounded-full object-cover" />
-                            <div className="flex-1">
-                                <div className="font-medium text-[#1d2228]">{u.name}</div>
-                                <div className="text-xs text-[#5e6a78]">{u.role === 'company' ? u.company : u.bio?.slice(0,
-                                    40)}</div>
-                                <Badge variant={u.role === 'company' ? 'green' : 'blue'}>{u.role === 'company' ? 'व्यवसाय' :
-                                    'कारीगर'}</Badge>
-                            </div>
-                            {selectedUser === u.id && <i className="fas fa-check-circle text-[#0a66c2]" />}
-                        </div>
-                    ))}
-                </div>
-                <Button className="w-full justify-center mt-4" disabled={!selectedUser} onClick={handleLogin}>
-                    साइन इन करें <Icon.ArrowRight />
-                </Button>
-                <p className="text-xs text-[#8a929f] mt-4 text-center">किसी भी खाते पर क्लिक करें – तुरंत लॉगिन</p>
-            </div>
-        </div>;
-    }
-
-    // ─── FEED ────────────────────────────────────────────────────────────────────
-
-    function FeedPage() {
-        const { currentUser, posts, likePost, addComment, setShowCreatePost, showCreatePost,
-            newPostContent, setNewPostContent, createPost } = useApp();
-        const [commentText, setCommentText] = useState({});
-        const [showComments, setShowComments] = useState({});
-
-        const handleComment = (postId) => {
-            const text = commentText[postId] || '';
-            if (text.trim()) {
-                addComment(postId, text);
-                setCommentText({ ...commentText, [postId]: '' });
-            }
-        };
-
-        return <div className="max-w-2xl mx-auto">
-            <Card className="mb-4">
-                <div className="flex items-center gap-3">
-                    <Avatar src={currentUser?.profileImage} name={currentUser?.name} size={10} />
-                    <button className="flex-1 text-left text-[#5e6a78] hover:bg-[#f3f6f9] rounded-full px-4 py-2 border border-[#d1d7df] transition"
-                    onClick={() => setShowCreatePost(true)}>
-                    कुछ शेयर करें...
-                </button>
-            </div>
-        </Card>
-
-        {posts.map(post => (
-            <Card key={post.id} className="mb-4">
-                <div className="flex items-center gap-3 mb-3">
-                    <Avatar src={post.userImage} name={post.userName} size={10} />
-                    <div>
-                        <div className="font-semibold text-[#1d2228]">{post.userName}</div>
-                        <div className="text-xs text-[#5e6a78] flex items-center gap-2">
-                            <Badge variant={post.userRole === 'company' ? 'green' : 'blue'}>{post.userRole === 'company' ?
-                                'व्यवसाय' : 'कारीगर'}</Badge>
-                            <span>· {post.timestamp}</span>
-                        </div>
-                    </div>
-                </div>
-                <p className="text-[#1d2228] text-sm leading-relaxed whitespace-pre-wrap">{post.content}</p>
-                {post.image && <img src={post.image} alt="Post" className="mt-3 rounded-lg w-full max-h-96 object-cover" />}
-                {post.type === 'job' && <div className="mt-3 p-3 bg-[#f3f6f9] rounded-lg border border-[#d1d7df]">
-                        <div className="flex items-center gap-2 text-sm"><i className="fas fa-briefcase text-[#0a66c2]" /><span className="font-medium text-[#1d2228]">नौकरी का अवसर</span><Badge variant="green">अभी आवेदन करें</Badge></div>
-                    </div>}
-                {post.type === 'demand' && <div className="mt-3 p-3 bg-[#fef7e0] rounded-lg border border-[#f59e0b]">
-                        <div className="flex items-center gap-2 text-sm"><i className="fas fa-handshake text-[#b26a00]" /><span className="font-medium text-[#1d2228]">माँग / आवश्यकता</span></div>
-                    </div>}
-                {post.type === 'service' && <div className="mt-3 p-3 bg-[#e1f3e8] rounded-lg border border-[#059669]">
-                        <div className="flex items-center gap-2 text-sm"><i className="fas fa-tools text-[#057642]" /><span className="font-medium text-[#1d2228]">सेवा उपलब्ध</span></div>
-                    </div>}
-                <div className="flex items-center gap-4 mt-3 pt-3 border-t border-[#d1d7df]">
-                    <button className="flex items-center gap-1 text-sm text-[#5e6a78] hover:text-[#0a66c2] transition"
-                    onClick={() => likePost(post.id)}>
-                    <Icon.HeartOutline /> <span>{post.likes}</span>
-                </button>
-                <button className="flex items-center gap-1 text-sm text-[#5e6a78] hover:text-[#0a66c2] transition"
-                onClick={() => setShowComments({ ...showComments, [post.id]: !showComments[post.id] })}>
-                <Icon.Comment /> <span>{post.comments.length}</span>
-            </button>
-            <button className="flex items-center gap-1 text-sm text-[#5e6a78] hover:text-[#0a66c2] transition">
-                <Icon.Share /> <span>{post.shares || 0}</span>
-            </button>
-        </div>
-        {showComments[post.id] && <div className="mt-3 pt-3 border-t border-[#d1d7df]">
-                {post.comments.map(c => <div key={c.id} className="flex gap-2 mb-2 text-sm">
-                        <span className="font-semibold text-[#1d2228]">{c.user}</span>
-                        <span className="text-[#5e6a78]">{c.text}</span>
-                        <span className="text-xs text-[#8a929f] ml-auto">{c.time}</span>
-                    </div>)}
-                <div className="flex gap-2 mt-2">
-                    <input className="flex-1 input-field text-sm py-1 px-3" placeholder="कमेंट लिखें..."
-                    value={commentText[post.id] || ''}
-                    onChange={e => setCommentText({ ...commentText, [post.id]: e.target.value })}
-                    onKeyDown={e => e.key === 'Enter' && handleComment(post.id)}
-                    />
-                    <Button size="sm" onClick={() => handleComment(post.id)}>पोस्ट करें</Button>
-                </div>
-            </div>}
-        </Card>
-    ))}
-
-    <Modal isOpen={showCreatePost} onClose={() => setShowCreatePost(false)} title="नई पोस्ट">
-        <div className="space-y-4">
-            <div className="flex items-center gap-3">
-                <Avatar src={currentUser?.profileImage} name={currentUser?.name} size={10} />
-                <div><div className="font-semibold text-[#1d2228]">{currentUser?.name}</div><div className="text-xs text-[#5e6a78]">{currentUser?.role === 'company' ? 'व्यवसाय' : 'कारीगर'}</div></div>
-            </div>
-            <textarea className="input-field" rows="4" placeholder="क्या शेयर करना चाहेंगे? (सेवा, माँग, या खोज)"
-            value={newPostContent} onChange={e => setNewPostContent(e.target.value)} />
-            <div className="flex justify-end gap-2">
-                <Button variant="secondary" onClick={() => setShowCreatePost(false)}>रद्द करें</Button>
-                <Button onClick={() => createPost(newPostContent)}>पोस्ट करें</Button>
-            </div>
-        </div>
-    </Modal>
-</div>;
+function PersonImg({ src, fallback, alt, className, style }) {
+  return <img src={src} alt={alt} className={className} style={style}
+    onError={(e)=>{ e.target.onerror=null; e.target.src=fallback; }} />;
 }
 
-// ─── JOBS ──────────────────────────────────────────────────────────────────────
+/* ---------- mock data ---------- */
 
-function JobsPage() {
-    const { jobs, applications, applyForJob, currentUser } = useApp();
-    const [filter, setFilter] = useState('all');
-    const [selectedJob, setSelectedJob] = useState(null);
+const WORKSPACES = [
+  { id:'manufacturer', name:'Manufacturer', desc:'Find skilled partners for your work', icon:'fa-briefcase' },
+  { id:'artisan', name:'Artisan', desc:'Discover projects that fit your craft', icon:'fa-hammer' },
+  { id:'admin', name:'Platform admin', desc:'Manage the SkillLink ecosystem', icon:'fa-shield-halved' },
+];
 
-    const filteredJobs = filter === 'all' ? jobs :
-        filter === 'internship' ? jobs.filter(j => j.isInternship) :
-        jobs.filter(j => !j.isInternship);
+const MANUFACTURER = {
+  id:'m1', role:'manufacturer', name:'Aditi Shah', company:'Aria Manufacturing',
+  image:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&q=80',
+  fallback: initials('Aditi Shah','4f46e5'),
+};
 
-    const hasApplied = (jobId) => applications.some(a => a.jobId === jobId && a.userId === currentUser?.id);
+const ARTISANS = [
+  { id:'a1', role:'artisan', name:'Rajesh Kumar', craft:'Wood Carving', experience:'8 years experience', location:'Jodhpur',
+    rating:4.8, projects:127, match:94, available:true,
+    image:'https://images.unsplash.com/photo-1601233749202-95d04d5b3c00?w=300&h=300&fit=crop&q=80',
+    fallback: initials('Rajesh Kumar','b45309') },
+  { id:'a2', role:'artisan', name:'Meera Joshi', craft:'Furniture Manufacturing', experience:'11 years experience', location:'Jaipur',
+    rating:4.9, projects:156, match:91, available:true,
+    image:'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&h=300&fit=crop&q=80',
+    fallback: initials('Meera Joshi','16803c') },
+  { id:'a3', role:'artisan', name:'Imran Sheikh', craft:'Metal Craft', experience:'6 years experience', location:'Udaipur',
+    rating:4.7, projects:94, match:88, available:true,
+    image:'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&q=80',
+    fallback: initials('Imran Sheikh','b91c1c') },
+  { id:'a4', role:'artisan', name:'Sunita Verma', craft:'Block Printing & Textiles', experience:'9 years experience', location:'Ahmedabad',
+    rating:4.9, projects:112, match:85, available:false,
+    image:'https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?w=300&h=300&fit=crop&q=80',
+    fallback: initials('Sunita Verma','7c3aed') },
+];
 
-    return <div>
-        <h2 className="text-xl font-bold text-[#1d2228] mb-4">अवसर / Jobs</h2>
-        <div className="flex gap-2 mb-4 flex-wrap">
-            <button className={`tab-btn ${filter === 'all' ? 'active' : ''}`} onClick={() => setFilter('all')}>सभी</button>
-            <button className={`tab-btn ${filter === 'full-time' ? 'active' : ''}`} onClick={() => setFilter('full-time')}>Full-time</button>
-            <button className={`tab-btn ${filter === 'internship' ? 'active' : ''}`} onClick={() => setFilter('internship')}>इंटर्नशिप</button>
+const CURRENT_ARTISAN = { ...ARTISANS[0], company:'Independent Artisan' };
+
+const REQUIREMENTS = [
+  { id:1, title:'Hand-carved dining collection', type:'Wood carving', location:'Jodhpur', status:'AI matching', progress:70, daysLeft:12, newApps:null },
+  { id:2, title:'Brass hardware — Q4 run', type:'Metal craft', location:'Jaipur', status:'AI matching', progress:35, daysLeft:28, newApps:3 },
+  { id:3, title:'Block print capsule', type:'Textile work', location:'Ahmedabad', status:'Draft', progress:0, daysLeft:null, newApps:null },
+];
+
+const JOBS = [
+  { id:1, title:'Brass hardware — Q4 run', location:'Jaipur', match:91, price:'₹80,000', tag:'Bh—Qr', color:'7c3aed' },
+  { id:2, title:'Dining collection', location:'Jodhpur', match:88, price:'₹50,000', tag:'Dc', color:'4f46e5' },
+  { id:3, title:'Boutique hotel fit-out', location:'Mumbai', match:82, price:'₹1.4L', tag:'Bhf', color:'16803c' },
+];
+
+const PROJECT = {
+  id:'SL-2048', title:'Hand-carved dining collection', status:'In progress', progress:42,
+  artisan:'Rajesh Kumar', budget:'₹50,000', deadline:'30 Oct 2024', started:'01 Sep 2024',
+  milestones:[
+    { id:1, title:'Material preparation', note:'Materials sourced and approved', state:'done' },
+    { id:2, title:'Initial production', note:'24 pieces · First sample review', state:'active' },
+    { id:3, title:'Finishing', note:'Polishing and quality check', state:'pending' },
+    { id:4, title:'Delivery', note:'Packaging and dispatch', state:'pending' },
+  ],
+};
+
+const APPLICATIONS_M = [
+  { id:1, name:'Meera Joshi', image: ARTISANS[1].image, fallback: ARTISANS[1].fallback, req:'Hand-carved dining collection', status:'applied', when:'2 days ago' },
+  { id:2, name:'Imran Sheikh', image: ARTISANS[2].image, fallback: ARTISANS[2].fallback, req:'Brass hardware — Q4 run', status:'shortlisted', when:'1 day ago' },
+  { id:3, name:'Sunita Verma', image: ARTISANS[3].image, fallback: ARTISANS[3].fallback, req:'Brass hardware — Q4 run', status:'applied', when:'5 hours ago' },
+];
+
+const APPLICATIONS_A = [
+  { id:1, title:'Dining collection', company:'Aria Manufacturing', status:'shortlisted', when:'2 days ago' },
+  { id:2, title:'Boutique hotel fit-out', company:'Marriott Projects', status:'applied', when:'6 hours ago' },
+];
+
+const MESSAGES_SEED = [
+  { id:1, from:'Rajesh Kumar', fromImage: ARTISANS[0].image, fromFallback: ARTISANS[0].fallback, text:'Hi, I\u2019d love to take on the dining collection order.', time:'2h ago', mine:false },
+  { id:2, from:'me', text:'Great — can you share your available start date?', time:'1h ago', mine:true },
+  { id:3, from:'Rajesh Kumar', fromImage: ARTISANS[0].image, fromFallback: ARTISANS[0].fallback, text:'I can start Monday. 24 units by end of October works well.', time:'40m ago', mine:false },
+];
+
+const NOTIFICATIONS = [
+  { id:1, text:'Meera Joshi applied to \u201cHand-carved dining collection\u201d', time:'10m ago', read:false, icon:'fa-user-plus' },
+  { id:2, text:'Aria Manufacturing shortlisted you for \u201cBrass hardware \u2014 Q4 run\u201d', time:'30m ago', read:false, icon:'fa-star' },
+  { id:3, text:'Rajesh Kumar sent you a message', time:'1h ago', read:false, icon:'fa-comment' },
+  { id:4, text:'Project \u201cHand-carved dining collection\u201d hit 40% progress', time:'Yesterday', read:true, icon:'fa-chart-line' },
+];
+
+const POSTS_SEED = [
+  { id:1, authorId:'a1', name:'Rajesh Kumar', role:'Wood Carving · Jodhpur', image: ARTISANS[0].image, fallback: ARTISANS[0].fallback,
+    time:'5h ago', text:'Just finished a hand-carved sheesham dining table \u2014 24 pieces, all joinery done by hand. Open to custom orders for the festive season.',
+    photo:'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?w=700&h=380&fit=crop&q=80',
+    likes:42, comments:[{ user:'Meera Joshi', text:'Beautiful grain work!' }], shares:7, tag:'Service available' },
+  { id:2, authorId:'a4', name:'Sunita Verma', role:'Block Printing · Ahmedabad', image: ARTISANS[3].image, fallback: ARTISANS[3].fallback,
+    time:'1d ago', text:'New run of naturally-dyed block print cushion covers and sarees is ready. Booking custom prints for December.',
+    photo:'https://images.unsplash.com/photo-1596496181848-3091d4878b24?w=700&h=380&fit=crop&q=80',
+    likes:56, comments:[{ user:'Imran Sheikh', text:'Need a few cushions \u2014 sending you a DM.' }], shares:12, tag:'Service available' },
+  { id:3, authorId:'m1', name:'Aditi Shah', role:'Aria Manufacturing · Jodhpur', image: MANUFACTURER.image, fallback: MANUFACTURER.fallback,
+    time:'2d ago', text:'We just closed our Q4 brass hardware sourcing brief with three excellent shortlisted artisans. Thanks to everyone who applied \u2014 more briefs going live this week.',
+    photo:null, likes:29, comments:[], shares:3, tag:null },
+  { id:4, authorId:'a3', name:'Imran Sheikh', role:'Metal Craft · Udaipur', image: ARTISANS[2].image, fallback: ARTISANS[2].fallback,
+    time:'4d ago', text:'Hand-forged brass door handles and copper wall art, made to order. Also taking on wrought iron commissions.',
+    photo:'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=700&h=380&fit=crop&q=80',
+    likes:28, comments:[], shares:4, tag:'Service available' },
+];
+
+const REVIEWS = [
+  { id:1, name:'Aria Manufacturing', rating:5, text:'Exceptional finish and delivered ahead of schedule.', project:'Dining collection', when:'2 weeks ago' },
+  { id:2, name:'Priya Furniture House', rating:5, text:'Reliable, communicative, and precise work.', project:'Furniture restoration', when:'1 month ago' },
+];
+
+/* ---------- context ---------- */
+
+const AppContext = createContext();
+function useApp(){ return useContext(AppContext); }
+
+function AppProvider({ children }) {
+  const [page, setPage] = useState('landing');
+  const [selectedRole, setSelectedRole] = useState('manufacturer');
+  const [currentUser, setCurrentUser] = useState(null);
+  const [toasts, setToasts] = useState([]);
+  const [applications, setApplications] = useState({ manufacturer: APPLICATIONS_M, artisan: APPLICATIONS_A });
+  const [notifications, setNotifications] = useState(NOTIFICATIONS);
+  const [messages, setMessages] = useState(MESSAGES_SEED);
+  const [requirements, setRequirements] = useState(REQUIREMENTS);
+  const [posts, setPosts] = useState(POSTS_SEED);
+  const [showCreatePost, setShowCreatePost] = useState(false);
+
+  const likePost = (id) => setPosts(prev => prev.map(p => p.id===id ? {...p, likes:p.likes+1, liked:true} : p));
+  const commentOnPost = (id, text) => setPosts(prev => prev.map(p => p.id===id ? {...p, comments:[...p.comments, {user: currentUser?.name || 'You', text}]} : p));
+  const createPost = (text) => {
+    if (!currentUser || !text.trim()) return;
+    setPosts(prev => [{ id:Date.now(), authorId:currentUser.id, name:currentUser.name,
+      role: currentUser.role==='manufacturer' ? currentUser.company : `${(currentUser.craft)||'Artisan'} · ${currentUser.location||''}`,
+      image:currentUser.image, fallback:currentUser.fallback, time:'now', text, photo:null, likes:0, comments:[], shares:0, tag:null }, ...prev]);
+    setShowCreatePost(false);
+    addToast('Post published.');
+  };
+
+  const addToast = (msg) => {
+    const id = Date.now();
+    setToasts(prev => [...prev, { id, msg }]);
+    setTimeout(() => setToasts(prev => prev.filter(t => t.id !== id)), 3500);
+  };
+
+  const enterWorkspace = () => {
+    if (selectedRole === 'admin') { addToast('Platform admin demo coming soon \u2014 try Manufacturer or Artisan.'); return; }
+    const user = selectedRole === 'manufacturer' ? MANUFACTURER : CURRENT_ARTISAN;
+    setCurrentUser(user);
+    setPage('dashboard');
+    addToast(`Welcome back, ${user.name.split(' ')[0]}.`);
+  };
+
+  const logout = () => { setCurrentUser(null); setPage('landing'); };
+
+  const markAllRead = () => { setNotifications(prev => prev.map(n => ({...n, read:true}))); addToast('All notifications marked as read.'); };
+
+  const updateAppStatus = (id, status) => {
+    setApplications(prev => ({ ...prev, manufacturer: prev.manufacturer.map(a => a.id===id ? {...a, status} : a) }));
+    addToast(status === 'shortlisted' ? 'Applicant shortlisted.' : 'Applicant declined.');
+  };
+
+  const sendMessage = (text) => {
+    setMessages(prev => [...prev, { id:Date.now(), from:'me', text, time:'now', mine:true }]);
+  };
+
+  const value = { page, setPage, selectedRole, setSelectedRole, currentUser, enterWorkspace, logout,
+    toasts, addToast, applications, notifications, setNotifications, markAllRead, updateAppStatus,
+    messages, sendMessage, requirements, posts, likePost, commentOnPost, createPost, showCreatePost, setShowCreatePost };
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+}
+
+/* ---------- shared bits ---------- */
+
+function Logo({ dark }) {
+  return <div className="flex items-center gap-2">
+    <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{background:'var(--indigo-600)'}}>
+      <i className="fas fa-bolt text-white text-sm"></i>
+    </div>
+    <span className="text-lg font-extrabold tracking-tight" style={{color: dark ? '#fff' : 'var(--ink)'}}>Skill <span style={{color:'var(--indigo-600)'}}>Link</span></span>
+  </div>;
+}
+
+function ToastContainer() {
+  const { toasts } = useApp();
+  return <div className="toast-container">
+    {toasts.map(t => <div key={t.id} className="toast">
+      <i className="fas fa-check-circle" style={{color:'#86efac'}}></i>
+      <span>{t.msg}</span>
+    </div>)}
+  </div>;
+}
+
+function Modal({ isOpen, onClose, title, children }) {
+  if (!isOpen) return null;
+  return <div className="modal-overlay" onClick={onClose}>
+    <div className="modal-content" onClick={e=>e.stopPropagation()}>
+      {title && <h3 className="text-lg font-bold mb-4">{title}</h3>}
+      {children}
+    </div>
+  </div>;
+}
+
+/* ---------- LANDING ---------- */
+
+function LandingPage() {
+  const { setPage } = useApp();
+  return <div className="min-h-screen bg-white">
+    <header className="border-b sticky top-0 bg-white/90 backdrop-blur-sm z-40" style={{borderColor:'var(--line)'}}>
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <Logo />
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium" style={{color:'var(--muted)'}}>
+          <a href="#" className="hover:text-black transition">How it works</a>
+          <a href="#" className="hover:text-black transition">Why SkillLink</a>
+          <a href="#" className="hover:text-black transition">For teams</a>
         </div>
-        <div className="space-y-4">
-            {filteredJobs.map(job => (
-                <Card key={job.id} className="hover:border-[#d1d7df]">
-                    <div className="flex items-start gap-4">
-                        <img src={job.companyLogo} alt={job.companyName} className="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm" />
-                        <div className="flex-1">
-                            <div className="flex items-start justify-between flex-wrap gap-2">
-                                <div><h3 className="font-semibold text-[#1d2228]">{job.title}</h3><p className="text-sm text-[#5e6a78]">{job.companyName} · {job.location}</p></div>
-                                <div className="text-right"><div className="text-sm font-semibold text-[#0a66c2]">{job.stipend}</div><Badge variant={job.isInternship ? 'purple' : 'blue'}>{job.isInternship ? 'इंटर्नशिप' : 'Full-time'}</Badge></div>
-                            </div>
-                            <p className="text-sm text-[#5e6a78] mt-2 line-clamp-2">{job.description}</p>
-                            <div className="flex flex-wrap gap-2 mt-2">{job.skills.slice(0, 3).map(s => <Badge key={s} variant="gray">{s}</Badge>)}</div>
-                            <div className="flex items-center gap-4 mt-3 flex-wrap">
-                                <span className="text-xs text-[#8a929f]"><i className="far fa-clock mr-1" /> {job.postedDate}</span>
-                                {hasApplied(job.id) ? <Badge variant="yellow">आवेदन किया</Badge> :
-                                    <Button size="sm" onClick={() => applyForJob(job.id)}>आवेदन करें</Button>}
-                                <Button size="sm" variant="ghost" onClick={() => setSelectedJob(job)}>विवरण</Button>
-                            </div>
-                        </div>
-                    </div>
-                </Card>
-            ))}
-        </div>
-        <Modal isOpen={!!selectedJob} onClose={() => setSelectedJob(null)} title="नौकरी का विवरण">
-            {selectedJob && <div className="space-y-4">
-                    <div className="flex items-center gap-4"><img src={selectedJob.companyLogo} alt={selectedJob.companyName} className="w-16 h-16 rounded-full object-cover" /><div><h3 className="font-bold text-[#1d2228]">{selectedJob.title}</h3><p className="text-sm text-[#5e6a78]">{selectedJob.companyName}</p></div></div>
-                    <div className="grid grid-cols-2 gap-3 text-sm"><div><span className="text-[#5e6a78]">स्थान</span><br /><span className="font-medium">{selectedJob.location}</span></div><div><span className="text-[#5e6a78]">पारिश्रमिक</span><br /><span className="font-medium">{selectedJob.stipend}</span></div></div>
-                    <div><h4 className="font-medium text-[#1d2228]">विवरण</h4><p className="text-sm text-[#5e6a78] mt-1">{selectedJob.description}</p></div>
-                    <div><h4 className="font-medium text-[#1d2228]">आवश्यक कौशल</h4><div className="flex flex-wrap gap-2 mt-1">{selectedJob.skills.map(s => <Badge key={s} variant="blue">{s}</Badge>)}</div></div>
-                    <div className="flex gap-3">{hasApplied(selectedJob.id) ? <Badge variant="green">आवेदन किया</Badge> : <Button onClick={() => { applyForJob(selectedJob.id);
-                                setSelectedJob(null); }}>आवेदन करें</Button>}<Button variant="secondary" onClick={() => setSelectedJob(null)}>बंद करें</Button></div>
-                </div>}
-            </Modal>
-        </div>;
-    }
+        <button className="btn btn-secondary" onClick={()=>setPage('login')}>Sign in <i className="fas fa-arrow-right text-xs"></i></button>
+      </div>
+    </header>
 
-    // ─── APPLICATIONS ───────────────────────────────────────────────────────────
-
-    function ApplicationsPage() {
-        const { applications, jobs, currentUser, updateApplicationStatus } = useApp();
-        const [filter, setFilter] = useState('all');
-
-        const userApps = applications.filter(a => a.userId === currentUser?.id);
-        const filteredApps = filter === 'all' ? userApps : userApps.filter(a => a.status === filter);
-
-        const getJobTitle = (jobId) => jobs.find(j => j.id === jobId)?.title || 'Unknown';
-
-        return <div>
-            <h2 className="text-xl font-bold text-[#1d2228] mb-4">मेरे आवेदन</h2>
-            <div className="flex gap-2 mb-4 flex-wrap">
-                {['all', 'applied', 'shortlisted', 'rejected'].map(t =>
-                    <button key={t} className={`tab-btn ${filter === t ? 'active' : ''}`} onClick={() => setFilter(t)}>
-                        {t === 'all' ? 'सभी' : t === 'applied' ? 'आवेदित' : t === 'shortlisted' ? 'शॉर्टलिस्ट' : 'अस्वीकृत'}
-                    </button>
-                )}
+    <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+      <div className="grid lg:grid-cols-2 gap-14 items-center">
+        <div>
+          <span className="badge badge-green mb-6"><i className="fas fa-sparkles text-[10px]"></i> The workforce network for makers</span>
+          <h1 className="text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tight" style={{color:'var(--ink)'}}>
+            Connect skills.<br/>
+            <span className="serif" style={{color:'var(--indigo-600)', fontSize:'1.05em'}}>Build opportunities.</span>
+          </h1>
+          <p className="text-lg mt-6 max-w-md leading-relaxed" style={{color:'var(--muted)'}}>
+            SkillLink connects manufacturers with verified skilled professionals through intelligent matching.
+          </p>
+          <div className="flex flex-wrap items-center gap-4 mt-8">
+            <button className="btn btn-primary" onClick={()=>setPage('login')}>Get started <i className="fas fa-arrow-right text-xs"></i></button>
+            <button className="btn btn-ghost" onClick={()=>setPage('login')}>Explore talent <i className="fas fa-play text-[10px]"></i></button>
+          </div>
+          <div className="flex items-center gap-3 mt-10">
+            <div className="flex -space-x-2">
+              {['R','M','I'].map((l,i)=><div key={i} className="w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold text-white" style={{background:['#4f46e5','#16803c','#b45309'][i]}}>{l}</div>)}
             </div>
-            {filteredApps.length === 0 ? <div className="text-center py-10 text-[#8a929f]"><i className="fas fa-inbox text-3xl block mb-2" />कोई आवेदन नहीं</div> :
-                <div className="space-y-3">
-                    {filteredApps.map(app => (
-                        <Card key={app.id}>
-                            <div className="flex items-center justify-between flex-wrap gap-2">
-                                <div><div className="font-semibold text-[#1d2228]">{getJobTitle(app.jobId)}</div><div className="text-xs text-[#8a929f]">आवेदन {app.appliedDate}</div></div>
-                                <div className="flex items-center gap-3">
-                                    <Badge variant={app.status === 'shortlisted' ? 'green' : app.status === 'rejected' ? 'red' : 'yellow'}>
-                                        {app.status === 'shortlisted' ? 'शॉर्टलिस्ट' : app.status === 'rejected' ? 'अस्वीकृत' : 'आवेदित'}
-                                    </Badge>
-                                    {currentUser?.role === 'company' && app.status === 'applied' && <>
-                                            <Button size="sm" onClick={() => updateApplicationStatus(app.id, 'shortlisted')}>शॉर्टलिस्ट करें</Button>
-                                            <Button size="sm" variant="secondary" onClick={() => updateApplicationStatus(app.id, 'rejected')}>अस्वीकार करें</Button>
-                                        </>}
-                                </div>
-                            </div>
-                        </Card>
-                    ))}
-                </div>}
-            </div>;
-        }
+            <span className="text-sm" style={{color:'var(--muted)'}}><b style={{color:'var(--ink)'}}>12,400+</b> verified professionals</span>
+          </div>
+        </div>
 
-        // ─── PROFILE ──────────────────────────────────────────────────────────────
+        <div className="relative">
+          <div className="rounded-2xl overflow-hidden shadow-2xl relative">
+            <PersonImg
+              src="https://images.unsplash.com/photo-1705579611249-9861db5469ea?w=900&h=700&fit=crop&q=80"
+              fallback="https://images.unsplash.com/photo-1601233749202-95d04d5b3c00?w=900&h=700&fit=crop&q=80"
+              alt="Factory worker at a machine" className="w-full h-[420px] object-cover" />
+          </div>
+          <div className="absolute -top-5 -left-5 bg-white rounded-xl shadow-xl border p-3.5 flex items-center gap-3" style={{borderColor:'var(--line)'}}>
+            <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{background:'var(--indigo-50)'}}><i className="fas fa-bolt" style={{color:'var(--indigo-600)'}}></i></div>
+            <div>
+              <div className="text-sm font-bold">AI Match found</div>
+              <div className="text-xs" style={{color:'var(--muted)'}}>Rajesh Kumar · 94%</div>
+            </div>
+            <i className="fas fa-check-circle text-sm" style={{color:'var(--green)'}}></i>
+          </div>
+          <div className="absolute -bottom-5 -right-5 bg-white rounded-xl shadow-xl border p-3.5 flex items-center gap-3" style={{borderColor:'var(--line)'}}>
+            <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{background:'var(--green-bg)'}}><i className="fas fa-shield-halved" style={{color:'var(--green)'}}></i></div>
+            <div>
+              <div className="text-sm font-bold">Verified talent</div>
+              <div className="text-xs" style={{color:'var(--muted)'}}>Trusted by 2,000+ teams</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        function ProfilePage() {
-            const { currentUser } = useApp();
-            if (!currentUser) return <div>Please login</div>;
-            const isCompany = currentUser.role === 'company';
+    <footer className="text-white py-10" style={{background:'var(--navy)'}}>
+      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <Logo dark />
+        <div className="flex gap-6 text-sm" style={{color:'#9ca0c2'}}>
+          <a href="#" className="hover:text-white transition">About</a>
+          <a href="#" className="hover:text-white transition">Privacy</a>
+          <a href="#" className="hover:text-white transition">Terms</a>
+        </div>
+        <div className="text-sm" style={{color:'#7d81a3'}}>© 2024 SkillLink.</div>
+      </div>
+    </footer>
+  </div>;
+}
 
-            return <div className="max-w-3xl mx-auto">
-                <div className="bg-white rounded-xl overflow-hidden shadow-card">
-                    <img src={currentUser.coverImage || 'https://picsum.photos/seed/default/800/200'} alt="Cover" className="w-full h-48 object-cover" />
-                    <div className="px-6 pb-6 relative">
-                        <div className="flex flex-col md:flex-row items-start gap-4 -mt-12">
-                            <Avatar src={currentUser.profileImage} name={currentUser.name} size={20} className="border-4 border-white shadow-md" />
-                            <div className="flex-1 pt-4 md:pt-0">
-                                <h2 className="text-2xl font-bold text-[#1d2228]">{currentUser.name}</h2>
-                                <p className="text-sm text-[#5e6a78]">{isCompany ? currentUser.company : currentUser.bio}</p>
-                                <div className="flex items-center gap-3 text-sm text-[#5e6a78] mt-1">
-                                    <span><i className="fas fa-map-marker-alt mr-1" /> {currentUser.location}</span>
-                                    {isCompany && <span><i className="fas fa-users mr-1" /> {currentUser.size}</span>}
-                                </div>
-                            </div>
-                        </div>
-                        {!isCompany && <div className="mt-4"><h4 className="font-semibold text-[#1d2228]">कौशल / Skills</h4><div className="flex flex-wrap gap-2 mt-1">{currentUser.skills?.map(s => <Badge key={s} variant="blue">{s}</Badge>)}</div></div>}
-                        {!isCompany && currentUser.services && <div className="mt-4"><h4 className="font-semibold text-[#1d2228]">सेवाएँ / Services</h4><div className="flex flex-wrap gap-2 mt-1">{currentUser.services.map(s => <Badge key={s} variant="green">{s}</Badge>)}</div></div>}
-                        {isCompany && <div className="mt-4"><h4 className="font-semibold text-[#1d2228]">उत्पाद / Products</h4><div className="flex flex-wrap gap-2 mt-1">{currentUser.products?.map(p => <Badge key={p} variant="purple">{p}</Badge>)}</div></div>}
-                        {!isCompany && currentUser.experience?.length > 0 && <div className="mt-4"><h4 className="font-semibold text-[#1d2228]">अनुभव</h4>{currentUser.experience.map((exp, i) => <div key={i} className="text-sm mt-1"><span className="font-medium">{exp.title}</span> at {exp.company} <span className="text-[#5e6a78]">· {exp.from} - {exp.to}</span></div>)}</div>}
-                        {isCompany && <div className="mt-4"><h4 className="font-semibold text-[#1d2228]">हमारे बारे में</h4><p className="text-sm text-[#5e6a78] mt-1">{currentUser.about}</p><div className="flex gap-3 mt-2 text-sm"><span><i className="fas fa-globe mr-1" /> {currentUser.website}</span><span><i className="fas fa-industry mr-1" /> {currentUser.industry}</span></div></div>}
-                    </div>
+/* ---------- LOGIN / WORKSPACE PICKER ---------- */
+
+function LoginPage() {
+  const { setPage, selectedRole, setSelectedRole, enterWorkspace } = useApp();
+  const roleIcon = { manufacturer:'fa-briefcase', artisan:'fa-hammer', admin:'fa-shield-halved' };
+  return <div className="min-h-screen flex flex-col md:flex-row">
+    <div className="w-full md:w-1/2 text-white p-10 md:p-16 flex flex-col justify-between" style={{background:'var(--navy)', minHeight:320}}>
+      <Logo dark />
+      <div>
+        <div className="eyebrow mb-4" style={{color:'var(--lavender)'}}>The skill network</div>
+        <h2 className="text-4xl md:text-5xl font-extrabold leading-tight">Good work starts<br/>with the <span className="serif" style={{color:'var(--lavender)', fontSize:'1.05em'}}>right people.</span></h2>
+        <p className="mt-5 max-w-sm" style={{color:'#b7bbdc'}}>Find the craft, capability and confidence to move your next project forward.</p>
+      </div>
+      <div>
+        <div className="h-px w-full mb-6" style={{background:'rgba(255,255,255,.14)'}}></div>
+        <div className="text-4xl font-extrabold">94%</div>
+        <div className="text-sm mt-1" style={{color:'#9ca0c2'}}>average match confidence<br/>across SkillLink</div>
+      </div>
+    </div>
+
+    <div className="w-full md:w-1/2 bg-white p-10 md:p-16 flex flex-col justify-center">
+      <button className="text-sm mb-8 flex items-center gap-2 self-start" style={{color:'var(--muted)'}} onClick={()=>setPage('landing')}>
+        <i className="fas fa-arrow-left"></i> Back to home
+      </button>
+      <div className="max-w-md w-full mx-auto md:mx-0">
+        <div className="eyebrow mb-3">Welcome to SkillLink</div>
+        <h2 className="text-3xl font-extrabold">Choose your workspace</h2>
+        <p className="text-sm mt-2" style={{color:'var(--muted)'}}>This demo lets you explore SkillLink as any role.</p>
+
+        <div className="mt-7 space-y-3">
+          {WORKSPACES.map(w => (
+            <div key={w.id} className={`role-pick flex items-center justify-between ${selectedRole===w.id?'selected':''}`} onClick={()=>setSelectedRole(w.id)}>
+              <div className="flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{background:'var(--indigo-50)'}}>
+                  <i className={`fas ${w.icon}`} style={{color:'var(--indigo-600)'}}></i>
                 </div>
-            </div>;
-        }
-
-        // ─── MESSAGES ────────────────────────────────────────────────────────────
-
-        function MessagesPage() {
-            const { messages, selectedChat, setSelectedChat, currentUser } = useApp();
-            const [newMsg, setNewMsg] = useState('');
-
-            const chatUsers = messages.reduce((acc, m) => {
-                const otherId = m.senderId === currentUser?.id ? m.receiverId : m.senderId;
-                if (!acc.find(u => u.id === otherId)) {
-                    const user = MOCK_USERS.find(u => u.id === otherId);
-                    if (user) acc.push({ id: user.id, name: user.name, image: user.profileImage, last: m.text,
-                        time: m.time });
-                }
-                return acc;
-            }, []);
-
-            const selectedChatData = messages.filter(m =>
-                (m.senderId === currentUser?.id && m.receiverId === selectedChat) ||
-                (m.senderId === selectedChat && m.receiverId === currentUser?.id)
-            );
-            const selectedUser = MOCK_USERS.find(u => u.id === selectedChat);
-
-            const sendMessage = () => {
-                if (!newMsg.trim() || !selectedChat) return;
-                messages.push({
-                    id: Date.now(),
-                    senderId: currentUser?.id,
-                    senderName: currentUser?.name,
-                    senderImage: currentUser?.profileImage,
-                    receiverId: selectedChat,
-                    text: newMsg,
-                    time: 'अभी',
-                    read: true,
-                });
-                setNewMsg('');
-            };
-
-            return <div className="flex flex-col md:flex-row gap-4 h-[600px]">
-                <div className="w-full md:w-72 bg-white rounded-xl border border-[#d1d7df] overflow-hidden flex flex-col shadow-card">
-                    <div className="p-3 border-b border-[#d1d7df]"><div className="relative"><i className="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-[#8a929f]" /><input className="input-field pl-10" placeholder="संदेश खोजें..." /></div></div>
-                    <div className="flex-1 overflow-y-auto">
-                        {chatUsers.map(u => <div key={u.id} className={`p-3 border-b border-[#d1d7df] cursor-pointer transition ${selectedChat === u.id ? 'bg-[#e8f0fe]' : 'hover:bg-[#f3f6f9]'}`}
-                            onClick={() => setSelectedChat(u.id)}>
-                                <div className="flex items-center gap-3"><img src={u.image} alt={u.name} className="w-10 h-10 rounded-full object-cover" /><div className="flex-1 min-w-0"><div className="font-semibold text-[#1d2228]">{u.name}</div><div className="text-sm text-[#5e6a78] truncate">{u.last}</div></div><div className="text-xs text-[#8a929f] flex-shrink-0">{u.time}</div></div>
-                            </div>)}
-                        {chatUsers.length === 0 && <div className="text-center py-8 text-[#8a929f]"><i className="fas fa-inbox text-3xl block mb-2" />कोई संदेश नहीं</div>}
-                    </div>
+                <div>
+                  <div className="font-semibold text-sm">{w.name}</div>
+                  <div className="text-xs" style={{color:'var(--muted)'}}>{w.desc}</div>
                 </div>
-                <div className="flex-1 bg-white rounded-xl border border-[#d1d7df] flex flex-col overflow-hidden shadow-card">
-                    {selectedChat && selectedUser ? <>
-                            <div className="p-3 border-b border-[#d1d7df] flex items-center gap-3">
-                                <img src={selectedUser.profileImage} alt={selectedUser.name} className="w-10 h-10 rounded-full object-cover" />
-                                <div><div className="font-semibold text-[#1d2228]">{selectedUser.name}</div><div className="text-xs text-[#057642]"><i className="fas fa-circle text-[10px] mr-1" /> ऑनलाइन</div></div>
-                            </div>
-                            <div className="flex-1 overflow-y-auto p-4 space-y-3">
-                                {selectedChatData.map((msg, i) => {
-                                    const isSent = msg.senderId === currentUser?.id;
-                                    return <div key={i} className={`flex ${isSent ? 'justify-end' : 'justify-start'}`}>
-                                        <div className={`msg-bubble ${isSent ? 'sent' : 'received'}`}>
-                                            {msg.text}
-                                            <div className={`text-xs mt-1 ${isSent ? 'text-[#93b5f8]' : 'text-[#8a929f]'}`}>{msg.time}</div>
-                                        </div>
-                                    </div>;
-                                })}
-                            </div>
-                            <div className="p-3 border-t border-[#d1d7df] flex items-center gap-2">
-                                <input className="flex-1 input-field" placeholder="संदेश लिखें..."
-                                value={newMsg} onChange={e => setNewMsg(e.target.value)}
-                                onKeyDown={e => e.key === 'Enter' && sendMessage()} />
-                                <Button size="sm" onClick={sendMessage}><Icon.Send /></Button>
-                            </div>
-                        </> :
-                        <div className="flex-1 flex items-center justify-center text-[#8a929f]">
-                            <div className="text-center"><i className="fas fa-comment-dots text-4xl block mb-2" /><p>कोई बातचीत चुनें</p></div>
-                        </div>}
-                    </div>
-                </div>;
-            }
+              </div>
+              <div className="w-5 h-5 rounded-full border flex items-center justify-center flex-shrink-0" style={{borderColor: selectedRole===w.id ? 'var(--indigo-600)' : 'var(--line)'}}>
+                {selectedRole===w.id && <div className="w-2.5 h-2.5 rounded-full" style={{background:'var(--indigo-600)'}}></div>}
+              </div>
+            </div>
+          ))}
+        </div>
 
-            // ─── NOTIFICATIONS ─────────────────────────────────────────────────────
+        <button className="btn btn-primary w-full justify-center mt-6" onClick={enterWorkspace}>
+          Enter workspace <i className="fas fa-arrow-right text-xs"></i>
+        </button>
+        <p className="text-xs text-center mt-4" style={{color:'var(--faint)'}}>
+          <i className="far fa-circle-question mr-1"></i> No password needed — this is a clickable demo
+        </p>
+      </div>
+    </div>
+  </div>;
+}
 
-            function NotificationsPage() {
-                const { notifications, setNotifications, addToast } = useApp();
+/* ---------- APP SHELL ---------- */
 
-                const markAllRead = () => {
-                    setNotifications(notifications.map(n => ({ ...n, read: true })));
-                    addToast('सभी नोटिफिकेशन पढ़े गए', 'info');
-                };
+const NAV_ITEMS = [
+  { id:'feed', label:'Feed', icon:'fa-newspaper' },
+  { id:'dashboard', label:'Dashboard', icon:'fa-grip' },
+  { id:'requirements', label:'Requirements', icon:'fa-clipboard-list' },
+  { id:'matches', label:'AI Matches', icon:'fa-bolt' },
+  { id:'applications', label:'Applications', icon:'fa-file-lines' },
+  { id:'projects', label:'Projects', icon:'fa-briefcase' },
+  { id:'messages', label:'Messages', icon:'fa-message', badgeKey:'messages' },
+  { id:'payments', label:'Payments', icon:'fa-credit-card' },
+  { id:'reviews', label:'Reviews', icon:'fa-star' },
+  { id:'profile', label:'Profile', icon:'fa-user' },
+];
 
-                return <div>
-                    <div className="flex items-center justify-between mb-4">
-                        <h2 className="text-xl font-bold text-[#1d2228]">सूचनाएँ</h2>
-                        <Button size="sm" variant="secondary" onClick={markAllRead}>सभी पढ़ें</Button>
-                    </div>
-                    <div className="space-y-2">
-                        {notifications.map(n => <Card key={n.id} className={`${!n.read ? 'border-l-4 border-l-[#0a66c2]' : ''}`}>
-                                <div className="flex items-center gap-3">
-                                    <div className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${!n.read ? 'bg-[#0a66c2]' : 'bg-[#d1d7df]'}`} />
-                                    <div className="flex-1"><div className="text-sm text-[#1d2228]">{n.text}</div><div className="text-xs text-[#8a929f]"><i className="far fa-clock mr-1" /> {n.time}</div></div>
-                                </div>
-                            </Card>)}
-                        </div>
-                    </div>;
-                }
+function Sidebar({ active, onSelect }) {
+  const { currentUser, notifications } = useApp();
+  const unread = notifications.filter(n=>!n.read).length;
+  return <div className="app-sidebar w-64 bg-white border-r h-screen sticky top-0 flex flex-col p-4" style={{borderColor:'var(--line)'}}>
+    <div className="px-2 mb-1"><Logo /></div>
+    <div className="px-2 mt-5 mb-2 eyebrow" style={{color:'var(--faint)'}}>
+      {currentUser.role === 'manufacturer' ? 'Manufacturer workspace' : 'Artisan workspace'}
+    </div>
+    <nav className="flex-1 space-y-1 overflow-y-auto">
+      {NAV_ITEMS.map(item => (
+        <div key={item.id} className={`sidebar-item ${active===item.id?'active':''}`} onClick={()=>onSelect(item.id)}>
+          <i className={`fas ${item.icon}`}></i>
+          <span>{item.label}</span>
+          {item.id==='messages' && <span className="ml-auto text-[11px] font-bold text-white rounded-full w-5 h-5 flex items-center justify-center" style={{background:'var(--indigo-600)'}}>2</span>}
+        </div>
+      ))}
+    </nav>
+    <div className="border-t pt-2 mt-2 space-y-1" style={{borderColor:'var(--line)'}}>
+      <div className={`sidebar-item ${active==='notifications'?'active':''}`} onClick={()=>onSelect('notifications')}>
+        <i className="fas fa-bell"></i><span>Notifications</span>
+        {unread>0 && <span className="ml-auto text-[11px] font-bold text-white rounded-full w-5 h-5 flex items-center justify-center" style={{background:'var(--red)'}}>{unread}</span>}
+      </div>
+      <div className={`sidebar-item ${active==='settings'?'active':''}`} onClick={()=>onSelect('settings')}>
+        <i className="fas fa-gear"></i><span>Settings</span>
+      </div>
+      <div className="sidebar-item" onClick={()=>onSelect('logout')} style={{color:'var(--red)'}}>
+        <i className="fas fa-arrow-right-from-bracket" style={{color:'var(--red)'}}></i><span>Log out</span>
+      </div>
+    </div>
+    <div className="border-t mt-3 pt-3 px-2 flex items-center gap-3" style={{borderColor:'var(--line)'}}>
+      <div className="flex items-center gap-3 min-w-0 flex-1 cursor-pointer" onClick={()=>onSelect('profile')}>
+        <PersonImg src={currentUser.image} fallback={currentUser.fallback} alt={currentUser.name} className="avatar-img" style={{width:36,height:36}} />
+        <div className="min-w-0 flex-1">
+          <div className="text-sm font-semibold truncate">{currentUser.name}</div>
+          <div className="text-xs truncate" style={{color:'var(--muted)'}}>{currentUser.company}</div>
+        </div>
+      </div>
+      <button onClick={()=>onSelect('logout')} title="Log out" className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-gray-100 transition flex-shrink-0">
+        <i className="fas fa-arrow-right-from-bracket text-xs" style={{color:'var(--faint)'}}></i>
+      </button>
+    </div>
+  </div>;
+}
 
-                // ─── APP ────────────────────────────────────────────────────────────────
+const PAGE_LABEL = { feed:'Feed', dashboard:'Dashboard', requirements:'Requirements', matches:'AI Matches', applications:'Applications',
+  projects:'Projects', messages:'Messages', payments:'Payments', reviews:'Reviews', notifications:'Notifications', settings:'Settings', profile:'Profile' };
 
-                function App() {
-                    const { currentPage, setCurrentPage, currentUser, logout, addToast } = useApp();
+function TopBar({ page, setPage }) {
+  const { currentUser, notifications } = useApp();
+  const unread = notifications.filter(n=>!n.read).length;
+  return <div className="flex items-center justify-between mb-8 flex-wrap gap-3">
+    <div className="text-sm" style={{color:'var(--faint)'}}>
+      Workspace <i className="fas fa-chevron-right text-[10px] mx-1.5"></i> <span style={{color:'var(--ink)'}}>{PAGE_LABEL[page]}</span>
+    </div>
+    <div className="flex items-center gap-2.5">
+      <button className="w-10 h-10 rounded-full border flex items-center justify-center hover:bg-gray-50 transition" style={{borderColor:'var(--line)'}}><i className="fas fa-search text-sm" style={{color:'var(--muted)'}}></i></button>
+      <button className="w-10 h-10 rounded-full border flex items-center justify-center hover:bg-gray-50 transition relative" style={{borderColor:'var(--line)'}}>
+        <i className="fas fa-bell text-sm" style={{color:'var(--muted)'}}></i>
+        {unread>0 && <span className="absolute -top-1 -right-1 text-[10px] font-bold text-white rounded-full w-4.5 h-4.5 px-1 flex items-center justify-center" style={{background:'var(--red)'}}>{unread}</span>}
+      </button>
+      <button onClick={()=>setPage && setPage('profile')} title="Profile">
+        <PersonImg src={currentUser.image} fallback={currentUser.fallback} alt={currentUser.name} className="avatar-img" style={{width:38,height:38}} />
+      </button>
+    </div>
+  </div>;
+}
 
-                    if (!currentUser) {
-                        return <div>
-                            {currentPage === 'landing' ? <LandingPage /> : <LoginPage />}
-                            <ToastContainer />
-                        </div>;
-                    }
+/* ---------- DASHBOARD ---------- */
 
-                    const sidebarItems = [
-                        { id: 'feed', label: 'फीड', icon: Icon.Feed },
-                        { id: 'jobs', label: 'अवसर', icon: Icon.Jobs },
-                        { id: 'applications', label: 'आवेदन', icon: Icon.Applicants },
-                        { id: 'messages', label: 'संदेश', icon: Icon.Messages, badge: '2' },
-                        { id: 'notifications', label: 'सूचनाएँ', icon: Icon.Notifications, badge: '3' },
-                        { id: 'profile', label: 'प्रोफाइल', icon: Icon.Profile },
-                    ];
+function ManufacturerDashboard({ setPage }) {
+  const { currentUser, requirements } = useApp();
+  const talent = ARTISANS.slice(0,3);
+  const metrics = [
+    { label:'Active requirements', value:'04', sub:'+2 this month', icon:'fa-clipboard-list' },
+    { label:'Active projects', value:'02', sub:'On track', icon:'fa-briefcase', subColor:'var(--indigo-600)' },
+    { label:'Applications', value:'18', sub:'+6 this week', icon:'fa-file-lines' },
+    { label:'AI matches', value:'24', sub:'Across 4 briefs', icon:'fa-bolt' },
+    { label:'Total spending', value:'₹2.4L', sub:'This quarter', icon:'fa-wallet' },
+  ];
 
-                    const bottomItems = [
-                        { id: 'settings', label: 'सेटिंग्स', icon: Icon.Settings },
-                        { id: 'logout', label: 'लॉग आउट', icon: Icon.LogOut },
-                    ];
+  return <div>
+    <div className="flex items-start justify-between flex-wrap gap-4 mb-6">
+      <div>
+        <h1 className="text-2xl md:text-3xl font-extrabold">Good morning, {currentUser.name.split(' ')[0]}</h1>
+        <p className="text-sm mt-1" style={{color:'var(--muted)'}}>Here's what's moving across your workspace.</p>
+      </div>
+    </div>
 
-                    const renderContent = () => {
-                        switch (currentPage) {
-                            case 'feed':
-                                return <FeedPage />;
-                            case 'jobs':
-                                return <JobsPage />;
-                            case 'applications':
-                                return <ApplicationsPage />;
-                            case 'messages':
-                                return <MessagesPage />;
-                            case 'notifications':
-                                return <NotificationsPage />;
-                            case 'profile':
-                                return <ProfilePage />;
-                            default:
-                                return <FeedPage />;
-                        }
-                    };
+    <div className="flex items-center justify-between flex-wrap gap-3 mb-5">
+      <div className="flex items-center gap-2 text-sm">
+        <span className="w-2 h-2 rounded-full inline-block" style={{background:'var(--green)'}}></span>
+        <span className="eyebrow" style={{color:'var(--ink-soft)'}}>Workspace overview</span>
+        <span style={{color:'var(--faint)'}}>· Tuesday, 24 September 2024</span>
+      </div>
+      <button className="btn btn-primary btn-sm"><i className="fas fa-plus text-xs"></i> New requirement</button>
+    </div>
 
-                    return <div className="flex min-h-screen bg-[#f3f6f9]">
-                        <Sidebar items={sidebarItems} active={currentPage} onSelect={(id) => {
-                                if (id === 'logout') { logout(); return; }
-                                if (id === 'settings') { addToast('सेटिंग्स (डेमो)', 'info'); return; }
-                                setCurrentPage(id);
-                            }} bottomItems={bottomItems} />
-                        <div className="flex-1 overflow-y-auto p-6 md:p-8 max-w-5xl mx-auto">
-                            <div className="flex items-center justify-between mb-6">
-                                <div>
-                                    <h2 className="text-xl font-bold text-[#1d2228]">
-                                        {currentPage === 'feed' ? 'होम' :
-                                            currentPage === 'jobs' ? 'अवसर' :
-                                            currentPage === 'applications' ? 'मेरे आवेदन' :
-                                            currentPage === 'messages' ? 'संदेश' :
-                                            currentPage === 'notifications' ? 'सूचनाएँ' :
-                                            currentPage === 'profile' ? 'प्रोफाइल' : 'SkillLink'}
-                                    </h2>
-                                    <p className="text-sm text-[#5e6a78]">स्वागत है, {currentUser?.name}</p>
-                                </div>
-                                <Avatar src={currentUser?.profileImage} name={currentUser?.name} size={9} />
-                            </div>
-                            {renderContent()}
-                        </div>
-                        <ToastContainer />
-                    </div>;
-                }
+    <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+      {metrics.map((m,i) => (
+        <div key={i} className="card card-hover text-center">
+          <div className="flex items-center justify-center gap-2 mb-1">
+            <i className={`fas ${m.icon} text-xs`} style={{color:'var(--indigo-600)'}}></i>
+            <div className="text-2xl font-extrabold">{m.value}</div>
+          </div>
+          <div className="text-sm font-semibold">{m.label}</div>
+          <div className="text-xs mt-0.5" style={{color: m.subColor || 'var(--green)'}}>{m.sub}</div>
+        </div>
+      ))}
+    </div>
 
-                // ─── RENDER ────────────────────────────────────────────────────────────
+    <div className="grid md:grid-cols-2 gap-6">
+      <div>
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="font-bold">Recent requirements</h3>
+          <button className="text-sm font-semibold" style={{color:'var(--indigo-600)'}} onClick={()=>setPage('requirements')}>View all →</button>
+        </div>
+        {requirements.map(r => (
+          <div key={r.id} className="card card-hover mb-3">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{background:'var(--indigo-50)'}}><i className="fas fa-hammer text-xs" style={{color:'var(--indigo-600)'}}></i></div>
+                <div className="min-w-0">
+                  <div className="font-semibold text-sm truncate">{r.title}</div>
+                  <div className="text-xs" style={{color:'var(--muted)'}}>{r.type} · {r.location}</div>
+                </div>
+              </div>
+              <div className="text-right flex-shrink-0">
+                <span className={`badge ${r.status==='Draft'?'badge-gray':'badge-indigo'}`}>{r.status}</span>
+                {r.daysLeft && <div className="text-xs mt-1" style={{color:'var(--muted)'}}>{r.daysLeft} days left</div>}
+                {r.newApps && <div className="text-xs font-semibold" style={{color:'var(--indigo-600)'}}>{r.newApps} new applications</div>}
+                {r.status==='Draft' && <div className="text-xs mt-1" style={{color:'var(--faint)'}}>Not published</div>}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div>
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="font-bold">Recommended talent</h3>
+          <button className="text-sm font-semibold" style={{color:'var(--indigo-600)'}} onClick={()=>setPage('matches')}>See all →</button>
+        </div>
+        {talent.map(a => (
+          <div key={a.id} className="card card-hover mb-3 cursor-pointer" onClick={()=>setPage('matches')}>
+            <div className="flex items-center gap-3.5">
+              <PersonImg src={a.image} fallback={a.fallback} alt={a.name} className="avatar-img" style={{width:44,height:44}} />
+              <div className="flex-1 min-w-0">
+                <div className="font-semibold text-sm truncate">{a.name}</div>
+                <div className="text-xs truncate" style={{color:'var(--muted)'}}>{a.craft} · {a.location}</div>
+              </div>
+              <div className="text-right flex-shrink-0">
+                <div className="text-xl font-extrabold" style={{color:'var(--indigo-600)'}}>{a.match}%</div>
+                <div className="text-xs" style={{color:'var(--muted)'}}>match</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
 
-                const root = ReactDOM.createRoot(document.getElementById('root'));
-                root.render(
-                    <AppProvider>
-                        <App />
-                    </AppProvider>
-                );
-            </script>
+    <div className="card mt-6 flex items-center gap-3 flex-wrap">
+      <i className="far fa-clock" style={{color:'var(--muted)'}}></i>
+      <span className="text-sm font-semibold">Latest activity</span>
+      <span className="text-sm" style={{color:'var(--indigo-600)'}}>Meera Joshi applied to "Hand-carved dining collection"</span>
+      <span className="text-xs ml-auto" style={{color:'var(--faint)'}}>2 min ago</span>
+    </div>
+  </div>;
+}
 
-        </body>
-        </html>
+function ArtisanDashboard({ setPage }) {
+  const { currentUser } = useApp();
+  const metrics = [
+    { label:'Recommended jobs', value:'12', sub:'3 new matches', icon:'fa-bolt' },
+    { label:'Active projects', value:'02', sub:'On track', icon:'fa-briefcase' },
+    { label:'Earnings', value:'₹86,400', sub:'This quarter', icon:'fa-wallet' },
+    { label:'Your rating', value:'4.9', sub:'from 34 reviews', icon:'fa-star' },
+  ];
+  return <div>
+    <h1 className="text-2xl md:text-3xl font-extrabold">Your craft, in motion.</h1>
+    <p className="text-sm mt-1 mb-6" style={{color:'var(--muted)'}}>Projects and opportunities matched to your skills.</p>
+
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      {metrics.map((m,i)=>(
+        <div key={i} className="card card-hover text-center">
+          <div className="flex items-center justify-center gap-2 mb-1">
+            <i className={`fas ${m.icon} text-xs`} style={{color:'var(--indigo-600)'}}></i>
+            <div className="text-2xl font-extrabold">{m.value}</div>
+          </div>
+          <div className="text-sm font-semibold">{m.label}</div>
+          <div className="text-xs mt-0.5" style={{color:'var(--muted)'}}>{m.sub}</div>
+        </div>
+      ))}
+    </div>
+
+    <div className="flex items-center justify-between mb-3">
+      <div>
+        <h3 className="font-bold">Recommended jobs</h3>
+        <p className="text-xs" style={{color:'var(--muted)'}}>Projects that fit your craft and availability.</p>
+      </div>
+      <button className="btn btn-primary btn-sm" onClick={()=>setPage('requirements')}>View all <i className="fas fa-arrow-right text-xs"></i></button>
+    </div>
+    <div className="card divide-y" style={{borderColor:'var(--line)'}}>
+      {JOBS.map(j => (
+        <div key={j.id} className="flex items-center gap-4 py-3.5 first:pt-0 last:pb-0 cursor-pointer" style={{borderColor:'var(--line)'}} onClick={()=>setPage('requirements')}>
+          <div className="w-10 h-10 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0" style={{background:`#${j.color}18`, color:`#${j.color}`}}>{j.tag}</div>
+          <div className="flex-1 min-w-0">
+            <div className="font-semibold text-sm truncate">{j.title}</div>
+            <div className="text-xs" style={{color:'var(--muted)'}}>{j.location}</div>
+          </div>
+          <span className="badge badge-indigo hidden sm:inline-flex">{j.match}% match</span>
+          <div className="text-sm font-semibold w-20 text-right">{j.price}</div>
+          <i className="fas fa-chevron-right text-xs" style={{color:'var(--faint)'}}></i>
+        </div>
+      ))}
+    </div>
+  </div>;
+}
+
+/* ---------- FEED ---------- */
+
+function FeedPage() {
+  const { currentUser, posts, likePost, commentOnPost, createPost, showCreatePost, setShowCreatePost } = useApp();
+  const [commentText, setCommentText] = useState({});
+  const [openComments, setOpenComments] = useState({});
+  const [draft, setDraft] = useState('');
+
+  const handleComment = (id) => {
+    const text = (commentText[id] || '').trim();
+    if (!text) return;
+    commentOnPost(id, text);
+    setCommentText({ ...commentText, [id]: '' });
+  };
+
+  return <div className="max-w-2xl">
+    <div className="card mb-5 flex items-center gap-3">
+      <PersonImg src={currentUser.image} fallback={currentUser.fallback} alt={currentUser.name} className="avatar-img" style={{width:40,height:40}} />
+      <button className="input-field flex-1 text-left" style={{color:'var(--faint)', borderRadius:999}} onClick={()=>setShowCreatePost(true)}>Share something with the network...</button>
+      <button className="w-10 h-10 rounded-full border flex items-center justify-center flex-shrink-0" style={{borderColor:'var(--line)'}} onClick={()=>setShowCreatePost(true)}>
+        <i className="fas fa-image" style={{color:'var(--indigo-600)'}}></i>
+      </button>
+    </div>
+
+    {posts.map(post => (
+      <div key={post.id} className="card mb-5">
+        <div className="flex items-center gap-3 mb-3">
+          <PersonImg src={post.image} fallback={post.fallback} alt={post.name} className="avatar-img" style={{width:44,height:44}} />
+          <div>
+            <div className="font-semibold text-sm">{post.name}</div>
+            <div className="text-xs" style={{color:'var(--muted)'}}>{post.role} · {post.time}</div>
+          </div>
+        </div>
+        <p className="text-sm leading-relaxed" style={{color:'var(--ink-soft)'}}>{post.text}</p>
+        {post.photo && <img src={post.photo} alt="" className="mt-3 rounded-xl w-full max-h-80 object-cover" />}
+        {post.tag && <div className="mt-3 flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-lg" style={{background:'var(--green-bg)', color:'var(--green)'}}>
+          <i className="fas fa-screwdriver-wrench"></i> {post.tag}
+        </div>}
+        <div className="flex items-center gap-5 mt-3 pt-3 border-t text-sm" style={{borderColor:'var(--line)', color:'var(--muted)'}}>
+          <button className="flex items-center gap-1.5 hover:text-black transition" onClick={()=>likePost(post.id)}>
+            <i className={post.liked ? 'fas fa-heart' : 'far fa-heart'} style={post.liked?{color:'var(--red)'}:{}}></i> {post.likes}
+          </button>
+          <button className="flex items-center gap-1.5 hover:text-black transition" onClick={()=>setOpenComments({...openComments,[post.id]:!openComments[post.id]})}>
+            <i className="far fa-comment"></i> {post.comments.length}
+          </button>
+          <button className="flex items-center gap-1.5 hover:text-black transition"><i className="far fa-share-from-square"></i> {post.shares}</button>
+        </div>
+        {openComments[post.id] && <div className="mt-3 pt-3 border-t" style={{borderColor:'var(--line)'}}>
+          {post.comments.map((c,i)=>(
+            <div key={i} className="flex gap-2 text-sm mb-1.5">
+              <span className="font-semibold">{c.user}</span>
+              <span style={{color:'var(--muted)'}}>{c.text}</span>
+            </div>
+          ))}
+          <div className="flex gap-2 mt-2">
+            <input className="input-field text-sm py-1.5" placeholder="Write a comment..." value={commentText[post.id]||''}
+              onChange={e=>setCommentText({...commentText,[post.id]:e.target.value})}
+              onKeyDown={e=>e.key==='Enter' && handleComment(post.id)} />
+            <button className="btn btn-primary btn-sm" onClick={()=>handleComment(post.id)}>Post</button>
+          </div>
+        </div>}
+      </div>
+    ))}
+
+    <Modal isOpen={showCreatePost} onClose={()=>setShowCreatePost(false)} title="Create a post">
+      <div className="flex items-center gap-3 mb-3">
+        <PersonImg src={currentUser.image} fallback={currentUser.fallback} alt={currentUser.name} className="avatar-img" style={{width:40,height:40}} />
+        <div><div className="font-semibold text-sm">{currentUser.name}</div><div className="text-xs" style={{color:'var(--muted)'}}>{currentUser.company}</div></div>
+      </div>
+      <textarea className="input-field" rows="4" placeholder="Share a service, request, or update..." value={draft} onChange={e=>setDraft(e.target.value)} style={{resize:'vertical'}}></textarea>
+      <div className="flex justify-end gap-2 mt-4">
+        <button className="btn btn-secondary btn-sm" onClick={()=>setShowCreatePost(false)}>Cancel</button>
+        <button className="btn btn-primary btn-sm" onClick={()=>{ createPost(draft); setDraft(''); }}>Post</button>
+      </div>
+    </Modal>
+  </div>;
+}
+
+/* ---------- AI MATCHES ---------- */
+
+function AIMatchesPage() {
+  const { currentUser, addToast } = useApp();
+  if (currentUser.role !== 'manufacturer') {
+    return <div>
+      <h2 className="text-xl font-bold mb-1">Jobs matched to you</h2>
+      <p className="text-sm mb-6" style={{color:'var(--muted)'}}>Ranked by fit with your skills and availability.</p>
+      <div className="hero-navy p-7 mb-6">
+        <span className="badge badge-navy mb-4"><i className="fas fa-bolt text-[10px]"></i> AI matching complete</span>
+        <h3 className="text-2xl md:text-3xl font-extrabold leading-snug">12 jobs fit your profile. <span className="serif" style={{color:'var(--lavender)', fontSize:'1.05em'}}>Here are your top 3.</span></h3>
+      </div>
+      <div className="space-y-4">
+        {JOBS.map(j => (
+          <div key={j.id} className="card card-hover flex items-center justify-between flex-wrap gap-4">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0" style={{background:`#${j.color}18`, color:`#${j.color}`}}>{j.tag}</div>
+              <div>
+                <div className="font-semibold">{j.title}</div>
+                <div className="text-sm" style={{color:'var(--muted)'}}><i className="fas fa-location-dot text-xs mr-1"></i>{j.location} · {j.price}</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="text-right"><div className="text-2xl font-extrabold" style={{color:'var(--indigo-600)'}}>{j.match}%</div><div className="text-xs" style={{color:'var(--muted)'}}>match score</div></div>
+              <button className="btn btn-primary btn-sm" onClick={()=>addToast('Application sent!')}>Apply</button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>;
+  }
+
+  return <div>
+    <div className="flex items-center justify-between flex-wrap gap-3 mb-5">
+      <div>
+        <h2 className="text-xl font-bold">AI recommended artisans</h2>
+        <p className="text-sm" style={{color:'var(--muted)'}}>Based on your requirement, SkillLink found these best matches.</p>
+      </div>
+      <span className="badge badge-green"><i className="fas fa-check-circle"></i> AI matching complete</span>
+    </div>
+
+    <div className="hero-navy p-7 mb-6">
+      <div className="flex items-center justify-between flex-wrap gap-4">
+        <div>
+          <h3 className="text-2xl md:text-3xl font-extrabold leading-snug">24 people fit your brief. <span className="serif" style={{color:'var(--lavender)', fontSize:'1.05em'}}>Here are your top 5.</span></h3>
+          <p className="text-sm mt-2" style={{color:'#b7bbdc'}}>Hand-carved dining collection · Wood carving · 24 units · Jodhpur</p>
+        </div>
+        <div className="flex gap-4 text-sm" style={{color:'#c8cbe8'}}>
+          <span><i className="fas fa-circle text-[6px] mr-1.5" style={{color:'#86efac'}}></i>Skills</span>
+          <span><i className="fas fa-circle text-[6px] mr-1.5" style={{color:'#93c5fd'}}></i>Availability</span>
+          <span><i className="fas fa-circle text-[6px] mr-1.5" style={{color:'#fcd34d'}}></i>Trust</span>
+        </div>
+      </div>
+    </div>
+
+    <div className="flex items-center justify-between mb-3">
+      <div className="text-sm font-semibold">{ARTISANS.length} recommended artisans</div>
+      <button className="btn btn-secondary btn-sm">Sort: Match score <i className="fas fa-chevron-right text-[10px]"></i></button>
+    </div>
+
+    <div className="space-y-4">
+      {ARTISANS.map(a => (
+        <div key={a.id} className="card card-hover">
+          <div className="flex flex-col md:flex-row md:items-center gap-4">
+            <div className="flex items-center gap-4 flex-1 min-w-0">
+              <PersonImg src={a.image} fallback={a.fallback} alt={a.name} className="avatar-img" style={{width:56,height:56}} />
+              <div className="min-w-0">
+                <div className="font-semibold flex items-center gap-2">
+                  {a.name} <i className="fas fa-circle-check text-xs" style={{color:'var(--green)'}}></i>
+                </div>
+                <div className="text-sm" style={{color:'var(--muted)'}}>{a.craft} · {a.experience}</div>
+                <div className="flex items-center gap-4 text-xs mt-1.5 flex-wrap" style={{color:'var(--faint)'}}>
+                  <span><i className="fas fa-location-dot mr-1"></i>{a.location}</span>
+                  <span><i className="fas fa-star mr-1" style={{color:'#f59e0b'}}></i>{a.rating}</span>
+                  <span>{a.projects} projects</span>
+                  {a.available && <span className="badge badge-green">Available now</span>}
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-4 md:ml-auto flex-wrap">
+              <div className="text-center"><div className="text-2xl font-extrabold" style={{color:'var(--indigo-600)'}}>{a.match}%</div><div className="text-xs" style={{color:'var(--muted)'}}>match score</div></div>
+              <div className="flex gap-2 flex-wrap">
+                <button className="btn btn-secondary btn-sm">View profile</button>
+                <button className="btn btn-primary btn-sm"><i className="far fa-star text-xs"></i> Shortlist</button>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center gap-5 mt-3 pt-3 border-t text-xs" style={{borderColor:'var(--line)', color:'var(--muted)'}}>
+            <button className="font-semibold flex items-center gap-1" style={{color:'var(--indigo-600)'}}><i className="far fa-circle-question"></i> Why this match?</button>
+            <button className="ml-auto w-8 h-8 rounded-full border flex items-center justify-center" style={{borderColor:'var(--line)'}}><i className="far fa-comment text-xs"></i></button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>;
+}
+
+/* ---------- REQUIREMENTS / JOBS BROWSE ---------- */
+
+function RequirementsPage() {
+  const { currentUser, addToast } = useApp();
+  const [applied, setApplied] = useState({});
+
+  if (currentUser.role === 'manufacturer') {
+    return <div>
+      <div className="flex items-center justify-between mb-5">
+        <h2 className="text-xl font-bold">Requirements</h2>
+        <button className="btn btn-primary btn-sm"><i className="fas fa-plus text-xs"></i> New requirement</button>
+      </div>
+      <div className="space-y-4">
+        {REQUIREMENTS.map(r => (
+          <div key={r.id} className="card card-hover">
+            <div className="flex items-center justify-between flex-wrap gap-3">
+              <div className="flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{background:'var(--indigo-50)'}}><i className="fas fa-hammer text-sm" style={{color:'var(--indigo-600)'}}></i></div>
+                <div>
+                  <div className="font-semibold">{r.title}</div>
+                  <div className="text-sm" style={{color:'var(--muted)'}}>{r.type} · {r.location}</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className={`badge ${r.status==='Draft'?'badge-gray':'badge-indigo'}`}>{r.status}</span>
+                {r.newApps && <span className="text-xs font-semibold" style={{color:'var(--indigo-600)'}}>{r.newApps} new applications</span>}
+                <button className="btn btn-secondary btn-sm">Details</button>
+              </div>
+            </div>
+            {r.progress>0 && <div className="mt-3 h-1.5 rounded-full bg-gray-100 overflow-hidden"><div className="h-full rounded-full" style={{width:`${r.progress}%`, background:'var(--indigo-600)'}}></div></div>}
+          </div>
+        ))}
+      </div>
+    </div>;
+  }
+
+  return <div>
+    <h2 className="text-xl font-bold mb-1">Open requirements</h2>
+    <p className="text-sm mb-5" style={{color:'var(--muted)'}}>Browse briefs from manufacturers and apply directly.</p>
+    <div className="space-y-4">
+      {JOBS.map(j => (
+        <div key={j.id} className="card card-hover">
+          <div className="flex items-center justify-between flex-wrap gap-3">
+            <div className="flex items-center gap-3.5">
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center text-xs font-bold" style={{background:`#${j.color}18`, color:`#${j.color}`}}>{j.tag}</div>
+              <div>
+                <div className="font-semibold">{j.title}</div>
+                <div className="text-sm" style={{color:'var(--muted)'}}><i className="fas fa-location-dot text-xs mr-1"></i>{j.location} · {j.price}</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="badge badge-indigo">{j.match}% match</span>
+              {applied[j.id] ? <span className="badge badge-amber">Applied</span> :
+                <button className="btn btn-primary btn-sm" onClick={()=>{ setApplied({...applied,[j.id]:true}); addToast('Application sent!'); }}>Apply</button>}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>;
+}
+
+/* ---------- APPLICATIONS ---------- */
+
+function ApplicationsPage() {
+  const { currentUser, applications, updateAppStatus } = useApp();
+  if (currentUser.role === 'manufacturer') {
+    return <div>
+      <h2 className="text-xl font-bold mb-5">Applications</h2>
+      <div className="space-y-3">
+        {applications.manufacturer.map(a => (
+          <div key={a.id} className="card flex items-center justify-between flex-wrap gap-3">
+            <div className="flex items-center gap-3.5">
+              <PersonImg src={a.image} fallback={a.fallback} alt={a.name} className="avatar-img" style={{width:44,height:44}} />
+              <div>
+                <div className="font-semibold text-sm">{a.name}</div>
+                <div className="text-xs" style={{color:'var(--muted)'}}>{a.req} · applied {a.when}</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className={`badge ${a.status==='shortlisted'?'badge-green':'badge-amber'}`}>{a.status==='shortlisted'?'Shortlisted':'Applied'}</span>
+              {a.status==='applied' && <>
+                <button className="btn btn-primary btn-sm" onClick={()=>updateAppStatus(a.id,'shortlisted')}>Shortlist</button>
+                <button className="btn btn-secondary btn-sm" onClick={()=>updateAppStatus(a.id,'rejected')}>Decline</button>
+              </>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>;
+  }
+  return <div>
+    <h2 className="text-xl font-bold mb-5">My applications</h2>
+    <div className="space-y-3">
+      {applications.artisan.map(a => (
+        <div key={a.id} className="card flex items-center justify-between flex-wrap gap-3">
+          <div>
+            <div className="font-semibold text-sm">{a.title}</div>
+            <div className="text-xs" style={{color:'var(--muted)'}}>{a.company} · applied {a.when}</div>
+          </div>
+          <span className={`badge ${a.status==='shortlisted'?'badge-green':'badge-amber'}`}>{a.status==='shortlisted'?'Shortlisted':'Applied'}</span>
+        </div>
+      ))}
+    </div>
+  </div>;
+}
+
+/* ---------- PROJECTS ---------- */
+
+function ProjectsPage() {
+  const p = PROJECT;
+  const stateStyle = { done:{bg:'var(--green)',icon:'fa-check'}, active:{bg:'var(--indigo-600)',icon:null}, pending:{bg:'#d7d9e4',icon:null} };
+  return <div>
+    <h2 className="text-xl font-bold">Project tracking</h2>
+    <p className="text-sm mb-6" style={{color:'var(--muted)'}}>{p.title} · {p.artisan}</p>
+
+    <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
+      <div>
+        <span className="badge badge-amber mb-2">In progress</span>
+        <h3 className="text-2xl font-extrabold">{p.title}</h3>
+        <p className="text-sm mt-1" style={{color:'var(--muted)'}}>Project {p.id} · Started {p.started} · Due {p.deadline}</p>
+      </div>
+      <button className="btn btn-primary"><i className="fas fa-plus text-xs"></i> Update progress</button>
+    </div>
+
+    <div className="hero-navy p-7 mb-6 flex flex-wrap items-center gap-8">
+      <div className="relative w-28 h-28 flex-shrink-0">
+        <svg viewBox="0 0 100 100" className="w-28 h-28 -rotate-90">
+          <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,.15)" strokeWidth="10" />
+          <circle cx="50" cy="50" r="42" fill="none" stroke="#818cf8" strokeWidth="10" strokeLinecap="round"
+            strokeDasharray={`${2*Math.PI*42}`} strokeDashoffset={`${2*Math.PI*42*(1-p.progress/100)}`} />
+        </svg>
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <div className="text-2xl font-extrabold">{p.progress}%</div>
+          <div className="text-[10px]" style={{color:'#b7bbdc'}}>overall</div>
+        </div>
+      </div>
+      <div className="flex flex-wrap gap-x-10 gap-y-4">
+        <div><div className="eyebrow" style={{color:'#9ea2c6'}}>Artisan</div><div className="font-semibold mt-1">{p.artisan}</div></div>
+        <div><div className="eyebrow" style={{color:'#9ea2c6'}}>Budget</div><div className="font-semibold mt-1">{p.budget}</div></div>
+        <div><div className="eyebrow" style={{color:'#9ea2c6'}}>Deadline</div><div className="font-semibold mt-1">{p.deadline}</div></div>
+        <div><div className="eyebrow" style={{color:'#9ea2c6'}}>Status</div><div className="font-semibold mt-1" style={{color:'#fcd34d'}}>In progress</div></div>
+      </div>
+    </div>
+
+    <div className="flex items-center justify-between mb-3">
+      <div>
+        <h3 className="font-bold">Project milestones</h3>
+        <p className="text-xs" style={{color:'var(--muted)'}}>Keep every handoff visible.</p>
+      </div>
+      <button className="btn btn-secondary btn-sm">Quality check <i className="fas fa-arrow-right text-xs"></i></button>
+    </div>
+    <div className="card">
+      {p.milestones.map((m,i) => {
+        const st = stateStyle[m.state];
+        return <div key={m.id} className={`flex items-center gap-4 py-3.5 ${i>0?'border-t':''}`} style={{borderColor:'var(--line)'}}>
+          <div className="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style={{background:st.bg}}>
+            {st.icon ? <i className={`fas ${st.icon}`}></i> : (m.state==='pending' ? i+1 : i+1)}
+          </div>
+          <div className="flex-1">
+            <div className="font-semibold text-sm">{m.title}</div>
+            <div className="text-xs" style={{color:'var(--muted)'}}>{m.note}</div>
+          </div>
+          <span className={`badge ${m.state==='done'?'badge-green':m.state==='active'?'badge-amber':'badge-gray'}`}>
+            {m.state==='done'?'Completed':m.state==='active'?'In progress':'Pending'}
+          </span>
+        </div>;
+      })}
+    </div>
+  </div>;
+}
+
+/* ---------- MESSAGES ---------- */
+
+function MessagesPage() {
+  const { messages, sendMessage } = useApp();
+  const [text, setText] = useState('');
+  return <div className="grid md:grid-cols-[280px_1fr] gap-5 h-[600px]">
+    <div className="card !p-0 overflow-hidden flex flex-col">
+      <div className="p-3 border-b" style={{borderColor:'var(--line)'}}>
+        <div className="relative"><i className="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-xs" style={{color:'var(--faint)'}}></i><input className="input-field pl-9" placeholder="Search messages" /></div>
+      </div>
+      <div className="flex-1 overflow-y-auto">
+        <div className="p-3 flex items-center gap-3 cursor-pointer" style={{background:'var(--indigo-50)'}}>
+          <PersonImg src={ARTISANS[0].image} fallback={ARTISANS[0].fallback} alt="Rajesh Kumar" className="avatar-img" style={{width:40,height:40}} />
+          <div className="min-w-0 flex-1">
+            <div className="font-semibold text-sm truncate">Rajesh Kumar</div>
+            <div className="text-xs truncate" style={{color:'var(--muted)'}}>{messages[messages.length-1].text}</div>
+          </div>
+          <div className="text-xs flex-shrink-0" style={{color:'var(--faint)'}}>40m</div>
+        </div>
+      </div>
+    </div>
+    <div className="card !p-0 flex flex-col overflow-hidden">
+      <div className="p-3 border-b flex items-center gap-3" style={{borderColor:'var(--line)'}}>
+        <PersonImg src={ARTISANS[0].image} fallback={ARTISANS[0].fallback} alt="Rajesh Kumar" className="avatar-img" style={{width:40,height:40}} />
+        <div>
+          <div className="font-semibold text-sm">Rajesh Kumar</div>
+          <div className="text-xs" style={{color:'var(--green)'}}><i className="fas fa-circle text-[7px] mr-1"></i>Online</div>
+        </div>
+      </div>
+      <div className="flex-1 overflow-y-auto p-4 space-y-3">
+        {messages.map(m => (
+          <div key={m.id} className={`flex ${m.mine?'justify-end':'justify-start'}`}>
+            <div className={`msg-bubble ${m.mine?'sent':'received'}`}>
+              {m.text}
+              <div className="text-[10px] mt-1 opacity-70">{m.time}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="p-3 border-t flex items-center gap-2" style={{borderColor:'var(--line)'}}>
+        <input className="input-field" placeholder="Write a message..." value={text} onChange={e=>setText(e.target.value)}
+          onKeyDown={e=>{ if(e.key==='Enter' && text.trim()){ sendMessage(text); setText(''); } }} />
+        <button className="btn btn-primary btn-sm" onClick={()=>{ if(text.trim()){ sendMessage(text); setText(''); } }}><i className="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>;
+}
+
+/* ---------- NOTIFICATIONS / PROFILE / PAYMENTS / REVIEWS / SETTINGS ---------- */
+
+function NotificationsPage() {
+  const { notifications, markAllRead } = useApp();
+  return <div>
+    <div className="flex items-center justify-between mb-5">
+      <h2 className="text-xl font-bold">Notifications</h2>
+      <button className="btn btn-secondary btn-sm" onClick={markAllRead}>Mark all as read</button>
+    </div>
+    <div className="space-y-2">
+      {notifications.map(n => (
+        <div key={n.id} className="card flex items-center gap-3" style={n.read?{}:{borderLeft:'3px solid var(--indigo-600)'}}>
+          <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{background:'var(--indigo-50)'}}><i className={`fas ${n.icon} text-xs`} style={{color:'var(--indigo-600)'}}></i></div>
+          <div className="flex-1">
+            <div className="text-sm">{n.text}</div>
+            <div className="text-xs mt-0.5" style={{color:'var(--faint)'}}><i className="far fa-clock mr-1"></i>{n.time}</div>
+          </div>
+          {!n.read && <span className="w-2 h-2 rounded-full flex-shrink-0" style={{background:'var(--indigo-600)'}}></span>}
+        </div>
+      ))}
+    </div>
+  </div>;
+}
+
+function ProfilePage() {
+  const { currentUser } = useApp();
+  const isArtisan = currentUser.role === 'artisan';
+  return <div className="max-w-3xl">
+    <div className="card !p-0 overflow-hidden">
+      <div className="h-36" style={{background:'linear-gradient(120deg, var(--navy), #2c3170)'}}></div>
+      <div className="px-6 pb-6">
+        <div className="flex flex-col md:flex-row items-start gap-4 -mt-12">
+          <PersonImg src={currentUser.image} fallback={currentUser.fallback} alt={currentUser.name} className="avatar-img border-4 border-white shadow-md" style={{width:96,height:96}} />
+          <div className="pt-4 md:pt-14">
+            <h2 className="text-2xl font-extrabold">{currentUser.name}</h2>
+            <p className="text-sm" style={{color:'var(--muted)'}}>{currentUser.company}</p>
+          </div>
+        </div>
+        {isArtisan ? <>
+          <div className="flex items-center gap-4 text-sm mt-4" style={{color:'var(--muted)'}}>
+            <span><i className="fas fa-location-dot mr-1"></i>{currentUser.location}</span>
+            <span><i className="fas fa-star mr-1" style={{color:'#f59e0b'}}></i>{currentUser.rating}</span>
+            <span><i className="fas fa-briefcase mr-1"></i>{currentUser.projects} projects</span>
+          </div>
+          <div className="mt-5">
+            <h4 className="font-semibold text-sm mb-2">Skills</h4>
+            <div className="flex flex-wrap gap-2">{['Wood Carving','Furniture Design','Handcrafted Decor'].map(s=><span key={s} className="badge badge-indigo">{s}</span>)}</div>
+          </div>
+        </> : <p className="text-sm mt-4 max-w-lg" style={{color:'var(--muted)'}}>Sourcing manager focused on connecting Aria Manufacturing with vetted artisan partners across Rajasthan and Gujarat.</p>}
+      </div>
+    </div>
+  </div>;
+}
+
+function PaymentsPage() {
+  const rows = [
+    { title:'Hand-carved dining collection', to:'Rajesh Kumar', amount:'₹25,000', status:'Paid', date:'12 Sep 2024' },
+    { title:'Brass hardware — Q4 run', to:'Imran Sheikh', amount:'₹18,000', status:'Pending', date:'20 Sep 2024' },
+    { title:'Block print capsule', to:'Sunita Verma', amount:'₹12,500', status:'Paid', date:'2 Sep 2024' },
+  ];
+  return <div>
+    <h2 className="text-xl font-bold mb-5">Payments</h2>
+    <div className="card !p-0 overflow-hidden">
+      {rows.map((r,i)=>(
+        <div key={i} className={`flex items-center justify-between gap-3 px-5 py-4 ${i>0?'border-t':''}`} style={{borderColor:'var(--line)'}}>
+          <div>
+            <div className="font-semibold text-sm">{r.title}</div>
+            <div className="text-xs" style={{color:'var(--muted)'}}>To {r.to} · {r.date}</div>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className={`badge ${r.status==='Paid'?'badge-green':'badge-amber'}`}>{r.status}</span>
+            <div className="font-semibold text-sm w-24 text-right">{r.amount}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>;
+}
+
+function ReviewsPage() {
+  return <div>
+    <h2 className="text-xl font-bold mb-5">Reviews</h2>
+    <div className="space-y-4">
+      {REVIEWS.map(r => (
+        <div key={r.id} className="card">
+          <div className="flex items-center justify-between mb-2">
+            <div className="font-semibold text-sm">{r.name}</div>
+            <div className="flex gap-0.5">{Array.from({length:5}).map((_,i)=><i key={i} className="fas fa-star text-xs" style={{color: i<r.rating ? '#f59e0b' : '#e5e7eb'}}></i>)}</div>
+          </div>
+          <p className="text-sm" style={{color:'var(--ink-soft)'}}>{r.text}</p>
+          <div className="text-xs mt-2" style={{color:'var(--faint)'}}>{r.project} · {r.when}</div>
+        </div>
+      ))}
+    </div>
+  </div>;
+}
+
+function SettingsPage() {
+  return <div>
+    <h2 className="text-xl font-bold mb-5">Settings</h2>
+    <div className="card max-w-lg">
+      <h4 className="font-semibold text-sm mb-3">Notification preferences</h4>
+      {['New applications','Messages','Project milestones'].map((s,i)=>(
+        <div key={i} className="flex items-center justify-between py-2.5 border-t first:border-t-0" style={{borderColor:'var(--line)'}}>
+          <span className="text-sm">{s}</span>
+          <div className="w-10 h-6 rounded-full flex items-center px-0.5" style={{background:'var(--indigo-600)'}}>
+            <div className="w-5 h-5 rounded-full bg-white ml-auto"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>;
+}
+
+/* ---------- SHELL ---------- */
+
+function AppShell() {
+  const { logout } = useApp();
+  const [page, setPage] = useState('dashboard');
+  const { currentUser } = useApp();
+
+  const render = () => {
+    switch(page){
+      case 'feed': return <FeedPage />;
+      case 'dashboard': return currentUser.role==='manufacturer' ? <ManufacturerDashboard setPage={setPage} /> : <ArtisanDashboard setPage={setPage} />;
+      case 'requirements': return <RequirementsPage />;
+      case 'matches': return <AIMatchesPage />;
+      case 'applications': return <ApplicationsPage />;
+      case 'projects': return <ProjectsPage />;
+      case 'messages': return <MessagesPage />;
+      case 'payments': return <PaymentsPage />;
+      case 'reviews': return <ReviewsPage />;
+      case 'notifications': return <NotificationsPage />;
+      case 'settings': return <SettingsPage />;
+      case 'profile': return <ProfilePage />;
+      default: return <ManufacturerDashboard setPage={setPage} />;
+    }
+  };
+
+  return <div className="flex min-h-screen" style={{background:'var(--bg)'}}>
+    <Sidebar active={page} onSelect={(id)=> id==='logout' ? logout() : setPage(id)} />
+    <div className="flex-1 p-6 md:p-10 max-w-[1400px] mx-auto w-full">
+      <TopBar page={page} setPage={setPage} />
+      {render()}
+    </div>
+    <ToastContainer />
+  </div>;
+}
+
+function Root() {
+  const { page, currentUser } = useApp();
+  if (currentUser) return <AppShell />;
+  return <div>
+    {page === 'landing' ? <LandingPage /> : <LoginPage />}
+    <ToastContainer />
+  </div>;
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<AppProvider><Root /></AppProvider>);
+</script>
+</body>
+</html>
