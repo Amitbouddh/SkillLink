@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { prisma } from '../lib/prisma';
+import { requireAuth, requireRole, AuthRequest } from '../middleware/auth';
+import { requirementSchema } from '../validation/schemas';
+const router = Router();
+router.get('/', requireAuth, async (_req, res) => res.json(await prisma.requirement.findMany({ include: { applications: true }, orderBy: { createdAt: 'desc' } })));
+router.get('/:id', requireAuth, async (req, res) => { const item = await prisma.requirement.findUnique({ where: { id: String(req.params.id) }, include: { applications: { include: { artisan: { include: { artisanProfile: true } } } } } }); if (!item) return res.status(404).json({ error: 'Requirement not found' }); res.json(item); });
+router.post('/', requireAuth, requireRole('MANUFACTURER'), async (req, res) => { const data = requirementSchema.parse(req.body); const item = await prisma.requirement.create({ data: { ...data, manufacturerId: (req as AuthRequest).user!.userId } }); res.status(201).json(item); });
+router.patch('/:id', requireAuth, requireRole('MANUFACTURER'), async (req, res) => { const data = requirementSchema.partial().parse(req.body); const item = await prisma.requirement.findUnique({ where: { id: String(req.params.id) } }); if (!item || item.manufacturerId !== (req as AuthRequest).user!.userId) return res.status(404).json({ error: 'Requirement not found' }); res.json(await prisma.requirement.update({ where: { id: item.id }, data })); });
+export default router;

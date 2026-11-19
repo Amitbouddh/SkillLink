@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { prisma } from '../lib/prisma';
+import { requireAuth, AuthRequest } from '../middleware/auth';
+const router = Router();
+const include = { artisan: { include: { artisanProfile: true } }, manufacturer: { select: { id: true, name: true, company: true } }, milestones: true, updates: { orderBy: { createdAt: 'desc' as const } } };
+router.get('/', requireAuth, async (req, res) => { const id = (req as AuthRequest).user!.userId; res.json(await prisma.project.findMany({ where: { OR: [{ artisanId: id }, { manufacturerId: id }] }, include })); });
+router.get('/:id', requireAuth, async (req, res) => { const item = await prisma.project.findUnique({ where: { id: String(req.params.id) }, include }); if (!item) return res.status(404).json({ error: 'Project not found' }); res.json(item); });
+router.patch('/:id', requireAuth, async (req, res) => { const item = await prisma.project.findUnique({ where: { id: String(req.params.id) } }); const id = (req as AuthRequest).user!.userId; if (!item || (item.artisanId !== id && item.manufacturerId !== id)) return res.status(404).json({ error: 'Project not found' }); res.json(await prisma.project.update({ where: { id: item.id }, data: { progress: req.body.progress, status: req.body.status } })); });
+router.post('/:id/milestones', requireAuth, async (req, res) => res.status(201).json(await prisma.milestone.create({ data: { projectId: String(req.params.id), name: String(req.body.name), amount: Number(req.body.amount), done: Boolean(req.body.done) } })));
+export default router;

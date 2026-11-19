@@ -1,0 +1,127 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "sqlite"
+  url = env("DATABASE_URL")
+}
+
+model User {
+  id String @id @default(cuid())
+  name String
+  email String @unique
+  passwordHash String
+  role String
+  company String?
+  createdAt DateTime @default(now())
+  artisanProfile ArtisanProfile?
+  requirements Requirement[] @relation("ManufacturerRequirements")
+  applications Application[]
+  manufacturerProjects Project[] @relation("ManufacturerProjects")
+  artisanProjects Project[] @relation("ArtisanProjects")
+  sentMessages Message[] @relation("SentMessages")
+  receivedMessages Message[] @relation("ReceivedMessages")
+  notifications Notification[]
+  reviewsWritten Review[] @relation("ReviewsWritten")
+  reviewsReceived Review[] @relation("ReviewsReceived")
+}
+model ArtisanProfile {
+  id String @id @default(cuid())
+  userId String @unique
+  skill String
+  skillsJson String
+  experienceYears Int
+  location String
+  rating Float @default(0)
+  availability String
+  projectCount Int @default(0)
+  bio String
+  languagesJson String
+  certificatesJson String
+  portfolioJson String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+model Requirement {
+  id String @id @default(cuid())
+  manufacturerId String
+  title String
+  type String
+  location String
+  status String @default("DRAFT")
+  description String?
+  deadline DateTime?
+  createdAt DateTime @default(now())
+  manufacturer User @relation("ManufacturerRequirements", fields: [manufacturerId], references: [id])
+  applications Application[]
+}
+model Application {
+  id String @id @default(cuid())
+  requirementId String
+  artisanId String
+  skill String
+  experienceYears Int
+  matchScore Float @default(0)
+  rating Float @default(0)
+  status String @default("NEW")
+  createdAt DateTime @default(now())
+  requirement Requirement @relation(fields: [requirementId], references: [id], onDelete: Cascade)
+  artisan User @relation(fields: [artisanId], references: [id])
+  @@unique([requirementId, artisanId])
+}
+model Project {
+  id String @id @default(cuid())
+  name String
+  manufacturerId String
+  artisanId String
+  budget Float
+  startDate DateTime
+  deadline DateTime
+  progress Int @default(0)
+  status String @default("ASSIGNED")
+  manufacturer User @relation("ManufacturerProjects", fields: [manufacturerId], references: [id])
+  artisan User @relation("ArtisanProjects", fields: [artisanId], references: [id])
+  milestones Milestone[]
+  updates ProjectUpdate[]
+}
+model Milestone {
+  id String @id @default(cuid())
+  projectId String
+  name String
+  done Boolean @default(false)
+  amount Float
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+model ProjectUpdate {
+  id String @id @default(cuid())
+  projectId String
+  text String
+  createdAt DateTime @default(now())
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+model Message {
+  id String @id @default(cuid())
+  senderId String
+  recipientId String
+  text String
+  createdAt DateTime @default(now())
+  sender User @relation("SentMessages", fields: [senderId], references: [id])
+  recipient User @relation("ReceivedMessages", fields: [recipientId], references: [id])
+}
+model Notification {
+  id String @id @default(cuid())
+  userId String
+  text String
+  read Boolean @default(false)
+  createdAt DateTime @default(now())
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+model Review {
+  id String @id @default(cuid())
+  authorId String
+  artisanId String
+  rating Float
+  text String
+  createdAt DateTime @default(now())
+  author User @relation("ReviewsWritten", fields: [authorId], references: [id])
+  artisan User @relation("ReviewsReceived", fields: [artisanId], references: [id])
+}

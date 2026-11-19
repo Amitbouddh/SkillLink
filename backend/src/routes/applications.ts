@@ -1,0 +1,9 @@
+import { Router } from 'express';
+import { prisma } from '../lib/prisma';
+import { requireAuth, requireRole, AuthRequest } from '../middleware/auth';
+import { applicationSchema } from '../validation/schemas';
+const router = Router();
+router.get('/', requireAuth, async (req, res) => { const user = (req as AuthRequest).user!; const items = await prisma.application.findMany({ where: user.role === 'ARTISAN' ? { artisanId: user.userId } : user.role === 'MANUFACTURER' ? { requirement: { manufacturerId: user.userId } } : {}, include: { artisan: { include: { artisanProfile: true } }, requirement: true }, orderBy: { createdAt: 'desc' } }); res.json(items); });
+router.post('/', requireAuth, requireRole('ARTISAN'), async (req, res) => { const data = applicationSchema.parse(req.body); const requirement = await prisma.requirement.findUnique({ where: { id: data.requirementId } }); if (!requirement) return res.status(404).json({ error: 'Requirement not found' }); const profile = await prisma.artisanProfile.findUnique({ where: { userId: (req as AuthRequest).user!.userId } }); if (!profile) return res.status(400).json({ error: 'Complete your artisan profile first' }); const score = profile.skill.toLowerCase().includes(requirement.type.toLowerCase()) ? 40 : 0; const item = await prisma.application.create({ data: { ...data, artisanId: profile.userId, rating: profile.rating, matchScore: score } }); res.status(201).json(item); });
+router.patch('/:id/status', requireAuth, requireRole('MANUFACTURER', 'ADMIN'), async (req, res) => { const status = String(req.body.status); if (!['NEW','SHORTLISTED','REJECTED','ACCEPTED'].includes(status)) return res.status(400).json({ error: 'Invalid application status' }); const item = await prisma.application.update({ where: { id: String(req.params.id) }, data: { status } }); res.json(item); });
+export default router;
